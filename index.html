@@ -45,6 +45,7 @@
             display: flex;
             align-items: center;
             gap: 12px;
+            cursor: pointer;
         }
         
         .logo i {
@@ -109,6 +110,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            cursor: pointer;
         }
         
         .user-actions a:hover {
@@ -153,6 +155,7 @@
             white-space: nowrap;
             position: relative;
             transition: color 0.3s;
+            cursor: pointer;
         }
         
         .category:hover, .category.active {
@@ -228,6 +231,7 @@
             align-items: center;
             gap: 8px;
             transition: gap 0.3s;
+            cursor: pointer;
         }
         
         .view-all:hover {
@@ -249,6 +253,12 @@
             transition: transform 0.4s, box-shadow 0.4s;
             position: relative;
             cursor: pointer;
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         .movie-card:hover {
@@ -379,6 +389,8 @@
             align-items: center;
             gap: 10px;
             transition: all 0.3s;
+            cursor: pointer;
+            border: none;
         }
         
         .btn-primary {
@@ -510,6 +522,204 @@
             font-weight: 600;
         }
         
+        /* 登录/注册模态框 */
+        .auth-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 20px;
+        }
+        
+        .auth-content {
+            background-color: #1a1a2e;
+            max-width: 500px;
+            margin: 80px auto;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            animation: modalOpen 0.4s ease-out;
+        }
+        
+        .auth-tabs {
+            display: flex;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .auth-tab {
+            flex: 1;
+            padding: 20px;
+            text-align: center;
+            background: none;
+            border: none;
+            color: #aaa;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .auth-tab.active {
+            color: #ff6b81;
+            border-bottom: 3px solid #ff6b81;
+        }
+        
+        .auth-form {
+            padding: 40px;
+        }
+        
+        .auth-form h2 {
+            margin-bottom: 30px;
+            text-align: center;
+            color: white;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #ddd;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 14px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: rgba(255, 255, 255, 0.05);
+            color: white;
+            font-size: 1rem;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #ff6b81;
+            box-shadow: 0 0 0 2px rgba(255, 107, 129, 0.2);
+        }
+        
+        .auth-submit {
+            width: 100%;
+            padding: 15px;
+            background-color: #ff4757;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+        
+        .auth-submit:hover {
+            background-color: #ff3742;
+        }
+        
+        /* 加载指示器 */
+        .loader {
+            display: none;
+            text-align: center;
+            padding: 40px;
+            grid-column: 1 / -1;
+        }
+        
+        .spinner {
+            border: 5px solid rgba(255, 255, 255, 0.1);
+            border-top: 5px solid #ff4757;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* 评分模态框 */
+        .rating-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 20px;
+        }
+        
+        .rating-content {
+            background-color: #1a1a2e;
+            max-width: 500px;
+            margin: 80px auto;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            animation: modalOpen 0.4s ease-out;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .rating-stars {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 30px 0;
+            font-size: 2.5rem;
+            color: #ddd;
+        }
+        
+        .rating-star {
+            cursor: pointer;
+            transition: color 0.2s, transform 0.2s;
+        }
+        
+        .rating-star:hover {
+            transform: scale(1.2);
+        }
+        
+        .rating-star.active {
+            color: #ffc107;
+        }
+        
+        /* 通知 */
+        .notification {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background-color: #1a1a2e;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            border-left: 5px solid #ff4757;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 10000;
+            animation: slideIn 0.3s ease-out;
+            max-width: 350px;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes slideOut {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(100%); opacity: 0; }
+        }
+        
         /* 页脚 */
         footer {
             background-color: #0a0a14;
@@ -554,6 +764,7 @@
             color: #aaa;
             text-decoration: none;
             transition: color 0.3s;
+            cursor: pointer;
         }
         
         .footer-links a:hover {
@@ -648,20 +859,20 @@
     <!-- 头部 -->
     <header>
         <div class="container header-container">
-            <div class="logo">
+            <div class="logo" id="homeLink">
                 <i class="fas fa-film"></i>
                 <h1>光影世界</h1>
             </div>
             
             <div class="search-container">
                 <i class="fas fa-search search-icon"></i>
-                <input type="text" class="search-box" placeholder="搜索电影、演员、导演...">
+                <input type="text" class="search-box" id="searchBox" placeholder="搜索电影、演员、导演...">
             </div>
             
             <div class="user-actions">
-                <a href="#"><i class="fas fa-user"></i> 登录</a>
-                <a href="#"><i class="fas fa-heart"></i> 收藏</a>
-                <a href="#"><i class="fas fa-bell"></i> 通知</a>
+                <a id="loginLink"><i class="fas fa-user"></i> <span id="userStatus">登录</span></a>
+                <a id="favoritesLink"><i class="fas fa-heart"></i> 收藏</a>
+                <a id="notificationsLink"><i class="fas fa-bell"></i> 通知</a>
             </div>
         </div>
     </header>
@@ -669,17 +880,15 @@
     <!-- 导航栏 -->
     <nav>
         <div class="container nav-container">
-            <div class="categories">
-                <a href="#" class="category active">全部电影</a>
-                <a href="#" class="category">热门推荐</a>
-                <a href="#" class="category">动作片</a>
-                <a href="#" class="category">科幻片</a>
-                <a href="#" class="category">爱情片</a>
-                <a href="#" class="category">喜剧片</a>
-                <a href="#" class="category">恐怖片</a>
-                <a href="#" class="category">悬疑片</a>
-                <a href="#" class="category">动画片</a>
-                <a href="#" class="category">纪录片</a>
+            <div class="categories" id="categories">
+                <a class="category active" data-category="all">全部电影</a>
+                <a class="category" data-category="action">动作片</a>
+                <a class="category" data-category="sci-fi">科幻片</a>
+                <a class="category" data-category="drama">剧情片</a>
+                <a class="category" data-category="comedy">喜剧片</a>
+                <a class="category" data-category="horror">恐怖片</a>
+                <a class="category" data-category="romance">爱情片</a>
+                <a class="category" data-category="animation">动画片</a>
             </div>
             
             <div class="filter">
@@ -689,12 +898,13 @@
                     <option value="2022">2022年</option>
                     <option value="2021">2021年</option>
                     <option value="2020">2020年</option>
+                    <option value="2019">2019年</option>
                 </select>
                 
                 <select id="sortFilter">
-                    <option value="popular">按热度排序</option>
                     <option value="rating">按评分排序</option>
                     <option value="newest">按时间排序</option>
+                    <option value="popular">按热度排序</option>
                 </select>
             </div>
         </div>
@@ -703,36 +913,39 @@
     <!-- 主要内容区 -->
     <main class="container">
         <!-- 特色电影 -->
-        <section class="featured-movie">
-            <div class="featured-content">
-                <span class="featured-tag">本周热门</span>
-                <h2 class="featured-title">沙丘：第二部</h2>
-                <p class="featured-description">保罗·厄崔迪与契妮和弗雷曼人联手，对毁灭他家庭的阴谋者展开复仇。他必须在他毕生挚爱与已知宇宙命运之间做抉择，并且努力阻止只有他能预见的可怕未来。</p>
-                <div class="featured-actions">
-                    <a href="#" class="btn btn-primary"><i class="fas fa-play"></i> 立即观看</a>
-                    <a href="#" class="btn btn-secondary"><i class="fas fa-info-circle"></i> 了解更多</a>
-                </div>
-            </div>
+        <section class="featured-movie" id="featuredMovie">
+            <!-- 动态内容将由JavaScript生成 -->
         </section>
         
         <!-- 电影推荐 -->
         <section class="main-content">
             <div class="section-title">
                 <h2>热门推荐</h2>
-                <a href="#" class="view-all">查看全部 <i class="fas fa-arrow-right"></i></a>
+                <a class="view-all" id="viewAllPopular">查看全部 <i class="fas fa-arrow-right"></i></a>
             </div>
             
             <div class="movies-grid" id="moviesGrid">
+                <div class="loader" id="moviesLoader">
+                    <div class="spinner"></div>
+                    <p>正在加载电影...</p>
+                </div>
                 <!-- 电影卡片将通过JavaScript动态生成 -->
             </div>
             
             <div class="section-title">
                 <h2>最新上映</h2>
-                <a href="#" class="view-all">查看全部 <i class="fas fa-arrow-right"></i></a>
+                <a class="view-all" id="viewAllNew">查看全部 <i class="fas fa-arrow-right"></i></a>
             </div>
             
             <div class="movies-grid" id="newMoviesGrid">
                 <!-- 最新电影卡片将通过JavaScript动态生成 -->
+            </div>
+            
+            <!-- 分页控件 -->
+            <div class="pagination" id="pagination" style="display: none; text-align: center; margin-top: 40px;">
+                <button id="prevPage" class="btn-secondary" style="margin-right: 10px;">上一页</button>
+                <span id="pageInfo" style="margin: 0 15px;">第 1 页，共 5 页</span>
+                <button id="nextPage" class="btn-secondary" style="margin-left: 10px;">下一页</button>
             </div>
         </section>
     </main>
@@ -777,10 +990,75 @@
                 </div>
                 
                 <div class="featured-actions">
-                    <a href="#" class="btn btn-primary"><i class="fas fa-play"></i> 立即观看</a>
-                    <button class="btn btn-secondary" id="addToFavorites"><i class="fas fa-heart"></i> 加入收藏</button>
-                    <button class="btn btn-secondary" id="rateMovie"><i class="fas fa-star"></i> 评价电影</button>
+                    <button class="btn btn-primary" id="watchMovie"><i class="fas fa-play"></i> 立即观看</button>
+                    <button class="btn btn-secondary" id="addToFavorites"><i class="far fa-heart"></i> 加入收藏</button>
+                    <button class="btn btn-secondary" id="rateMovieBtn"><i class="fas fa-star"></i> 评价电影</button>
                 </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 登录/注册模态框 -->
+    <div class="auth-modal" id="authModal">
+        <div class="auth-content">
+            <div class="auth-tabs">
+                <button class="auth-tab active" id="loginTab">登录</button>
+                <button class="auth-tab" id="registerTab">注册</button>
+            </div>
+            
+            <div class="auth-form">
+                <form id="loginForm" style="display: block;">
+                    <h2>欢迎回来</h2>
+                    <div class="form-group">
+                        <label for="loginEmail">邮箱地址</label>
+                        <input type="email" id="loginEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">密码</label>
+                        <input type="password" id="loginPassword" required>
+                    </div>
+                    <button type="submit" class="auth-submit">登录</button>
+                </form>
+                
+                <form id="registerForm" style="display: none;">
+                    <h2>创建新账户</h2>
+                    <div class="form-group">
+                        <label for="registerUsername">用户名</label>
+                        <input type="text" id="registerUsername" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerEmail">邮箱地址</label>
+                        <input type="email" id="registerEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerPassword">密码</label>
+                        <input type="password" id="registerPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">确认密码</label>
+                        <input type="password" id="confirmPassword" required>
+                    </div>
+                    <button type="submit" class="auth-submit">注册</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 评分模态框 -->
+    <div class="rating-modal" id="ratingModal">
+        <div class="rating-content">
+            <h2 id="ratingMovieTitle">为电影评分</h2>
+            <p>请选择1-5星评价</p>
+            <div class="rating-stars">
+                <span class="rating-star" data-rating="1">☆</span>
+                <span class="rating-star" data-rating="2">☆</span>
+                <span class="rating-star" data-rating="3">☆</span>
+                <span class="rating-star" data-rating="4">☆</span>
+                <span class="rating-star" data-rating="5">☆</span>
+            </div>
+            <div class="featured-actions">
+                <button class="btn btn-primary" id="submitRating">提交评分</button>
+                <button class="btn btn-secondary" id="cancelRating">取消</button>
             </div>
         </div>
     </div>
@@ -793,41 +1071,41 @@
                     <h3>关于我们</h3>
                     <p>光影世界是一个专业的电影推荐和资讯平台，为用户提供最新、最全的电影信息、影评和推荐。</p>
                     <div style="margin-top: 20px; display: flex; gap: 15px;">
-                        <a href="#" style="color: #aaa; font-size: 1.5rem;"><i class="fab fa-weibo"></i></a>
-                        <a href="#" style="color: #aaa; font-size: 1.5rem;"><i class="fab fa-weixin"></i></a>
-                        <a href="#" style="color: #aaa; font-size: 1.5rem;"><i class="fab fa-qq"></i></a>
-                        <a href="#" style="color: #aaa; font-size: 1.5rem;"><i class="fab fa-github"></i></a>
+                        <a style="color: #aaa; font-size: 1.5rem;"><i class="fab fa-weibo"></i></a>
+                        <a style="color: #aaa; font-size: 1.5rem;"><i class="fab fa-weixin"></i></a>
+                        <a style="color: #aaa; font-size: 1.5rem;"><i class="fab fa-qq"></i></a>
+                        <a style="color: #aaa; font-size: 1.5rem;"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
                 
                 <div class="footer-column">
                     <h3>快速链接</h3>
                     <ul class="footer-links">
-                        <li><a href="#">首页</a></li>
-                        <li><a href="#">电影库</a></li>
-                        <li><a href="#">排行榜</a></li>
-                        <li><a href="#">新片预告</a></li>
-                        <li><a href="#">影评社区</a></li>
+                        <li><a id="footerHome">首页</a></li>
+                        <li><a id="footerMovies">电影库</a></li>
+                        <li><a id="footerRanking">排行榜</a></li>
+                        <li><a id="footerTrailers">新片预告</a></li>
+                        <li><a id="footerCommunity">影评社区</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
                     <h3>电影分类</h3>
                     <ul class="footer-links">
-                        <li><a href="#">动作片</a></li>
-                        <li><a href="#">科幻片</a></li>
-                        <li><a href="#">爱情片</a></li>
-                        <li><a href="#">喜剧片</a></li>
-                        <li><a href="#">恐怖片</a></li>
+                        <li><a data-category="action">动作片</a></li>
+                        <li><a data-category="sci-fi">科幻片</a></li>
+                        <li><a data-category="romance">爱情片</a></li>
+                        <li><a data-category="comedy">喜剧片</a></li>
+                        <li><a data-category="horror">恐怖片</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
                     <h3>联系我们</h3>
                     <ul class="footer-links">
-                        <li><a href="#"><i class="fas fa-envelope"></i> contact@movieworld.com</a></li>
-                        <li><a href="#"><i class="fas fa-phone"></i> 400-123-4567</a></li>
-                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> 北京市朝阳区电影大厦</a></li>
+                        <li><a><i class="fas fa-envelope"></i> contact@movieworld.com</a></li>
+                        <li><a><i class="fas fa-phone"></i> 400-123-4567</a></li>
+                        <li><a><i class="fas fa-map-marker-alt"></i> 北京市朝阳区电影大厦</a></li>
                     </ul>
                 </div>
             </div>
@@ -839,182 +1117,1002 @@
     </footer>
 
     <script>
-        // 电影数据
-        const movies = [
-            {
-                id: 1,
-                title: "奥本海默",
-                year: 2023,
-                duration: "180分钟",
-                genre: "剧情/传记",
-                rating: 8.8,
-                poster: "https://images.unsplash.com/photo-1534447677768-be436bb09401?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1194&q=80",
-                description: "克里斯托弗·诺兰自编自导的二战题材传记电影，讲述了美国理论物理学家罗伯特·奥本海默在第二次世界大战期间研发第一批原子弹的故事。",
-                director: "克里斯托弗·诺兰",
-                writer: "克里斯托弗·诺兰",
-                actors: "基里安·墨菲, 艾米莉·布朗特, 马特·达蒙",
-                language: "英语",
-                isNew: false
-            },
-            {
-                id: 2,
-                title: "流浪地球2",
-                year: 2023,
-                duration: "173分钟",
-                genre: "科幻/灾难",
-                rating: 8.3,
-                poster: "https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80",
-                description: "太阳即将毁灭，人类在地球表面建造出巨大的推进器，寻找新的家园。然而宇宙之路危机四伏，为了拯救地球，流浪地球时代的年轻人再次挺身而出，展开争分夺秒的生死之战。",
-                director: "郭帆",
-                writer: "郭帆, 龚格尔",
-                actors: "吴京, 刘德华, 李雪健",
-                language: "汉语普通话",
-                isNew: true
-            },
-            {
-                id: 3,
-                title: "蜘蛛侠：纵横宇宙",
-                year: 2023,
-                duration: "140分钟",
-                genre: "动画/动作",
-                rating: 8.9,
-                poster: "https://images.unsplash.com/photo-1635805737707-575885ab0820?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80",
-                description: "迈尔斯·莫拉莱斯回归，与格温·斯泰西重聚，并加入了新组建的蜘蛛侠团队，与威胁整个多元宇宙的強大恶势力对抗。",
-                director: "乔伊姆·多斯·桑托斯",
-                writer: "菲尔·罗德, 克里斯托弗·米勒",
-                actors: "沙梅克·摩尔, 海莉·斯坦菲尔德",
-                language: "英语",
-                isNew: true
-            },
-            {
-                id: 4,
-                title: "疾速追杀4",
-                year: 2023,
-                duration: "169分钟",
-                genre: "动作/惊悚",
-                rating: 8.5,
-                poster: "https://images.unsplash.com/photo-1489599809516-9827b6d1cf13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80",
-                description: "约翰·威克发现了击败高桌会的方法。但在获得自由之前，他必须先面对一位拥有强大全球联盟的新敌人。",
-                director: "查德·斯塔赫斯基",
-                writer: "谢伊·哈顿, 迈克尔·芬奇",
-                actors: "基努·里维斯, 甄子丹, 比尔·斯卡斯加德",
-                language: "英语",
-                isNew: false
-            },
-            {
-                id: 5,
-                title: "银河护卫队3",
-                year: 2023,
-                duration: "150分钟",
-                genre: "科幻/冒险",
-                rating: 8.4,
-                poster: "https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80",
-                description: "彼得·奎尔仍在为失去卡魔拉而伤心，他必须召集他的团队保卫宇宙，同时保护火箭浣熊。如果任务失败，这可能意味着银河护卫队的终结。",
-                director: "詹姆斯·古恩",
-                writer: "詹姆斯·古恩",
-                actors: "克里斯·帕拉特, 佐伊·索尔达娜, 戴夫·巴蒂斯塔",
-                language: "英语",
-                isNew: false
-            },
-            {
-                id: 6,
-                title: "碟中谍7：致命清算（上）",
-                year: 2023,
-                duration: "163分钟",
-                genre: "动作/冒险",
-                rating: 8.2,
-                poster: "https://images.unsplash.com/photo-1534447677768-be436bb09401?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1194&q=80",
-                description: "伊森·亨特和他的IMF小队必须追踪一种威胁全人类生存的新武器，这让他们与一个神秘而强大的敌人发生冲突。",
-                director: "克里斯托弗·麦奎里",
-                writer: "克里斯托弗·麦奎里",
-                actors: "汤姆·克鲁斯, 海莉·阿特维尔, 文·瑞姆斯",
-                language: "英语",
-                isNew: true
-            },
-            {
-                id: 7,
-                title: "长安三万里",
-                year: 2023,
-                duration: "168分钟",
-                genre: "动画/历史",
-                rating: 8.5,
-                poster: "https://images.unsplash.com/photo-1489599809516-9827b6d1cf13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80",
-                description: "安史之乱爆发后数年，吐蕃大军攻打西南。大唐节度使高适交战不利，长安岌岌可危。困守孤城的高适向监军太监回忆起自己与李白的一生往事。",
-                director: "谢君伟, 邹靖",
-                writer: "红泥小火炉",
-                actors: "杨天翔, 凌振赫, 吴俊全",
-                language: "汉语普通话",
-                isNew: true
-            },
-            {
-                id: 8,
-                title: "夺宝奇兵：命运转盘",
-                year: 2023,
-                duration: "154分钟",
-                genre: "动作/冒险",
-                rating: 7.2,
-                poster: "https://images.unsplash.com/photo-1635805737707-575885ab0820?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80",
-                description: "印第安纳·琼斯博士即将退休，但他的教女发现了一个可以改变历史走向的宝物，两人由此展开了一场跨越时空的冒险。",
-                director: "詹姆斯·曼高德",
-                writer: "杰斯·巴特沃斯, 约翰-亨利·巴特沃斯",
-                actors: "哈里森·福特, 菲比·沃勒-布里奇, 麦斯·米科尔森",
-                language: "英语",
-                isNew: false
+        // 电影数据API模拟
+        class MovieAPI {
+            constructor() {
+                // 模拟电影数据库
+                this.movies = [
+                    {
+                        id: 1,
+                        title: "奥本海默",
+                        year: 2023,
+                        duration: "180分钟",
+                        genre: "剧情/传记",
+                        category: "drama",
+                        rating: 8.8,
+                        userRating: null,
+                        poster: "https://images.unsplash.com/photo-1534447677768-be436bb09401?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1194&q=80",
+                        description: "克里斯托弗·诺兰自编自导的二战题材传记电影，讲述了美国理论物理学家罗伯特·奥本海默在第二次世界大战期间研发第一批原子弹的故事。",
+                        director: "克里斯托弗·诺兰",
+                        writer: "克里斯托弗·诺兰",
+                        actors: "基里安·墨菲, 艾米莉·布朗特, 马特·达蒙",
+                        language: "英语",
+                        isNew: false,
+                        isFeatured: true,
+                        popularity: 95
+                    },
+                    {
+                        id: 2,
+                        title: "流浪地球2",
+                        year: 2023,
+                        duration: "173分钟",
+                        genre: "科幻/灾难",
+                        category: "sci-fi",
+                        rating: 8.3,
+                        userRating: null,
+                        poster: "https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80",
+                        description: "太阳即将毁灭，人类在地球表面建造出巨大的推进器，寻找新的家园。然而宇宙之路危机四伏，为了拯救地球，流浪地球时代的年轻人再次挺身而出，展开争分夺秒的生死之战。",
+                        director: "郭帆",
+                        writer: "郭帆, 龚格尔",
+                        actors: "吴京, 刘德华, 李雪健",
+                        language: "汉语普通话",
+                        isNew: true,
+                        isFeatured: false,
+                        popularity: 92
+                    },
+                    {
+                        id: 3,
+                        title: "蜘蛛侠：纵横宇宙",
+                        year: 2023,
+                        duration: "140分钟",
+                        genre: "动画/动作",
+                        category: "animation",
+                        rating: 8.9,
+                        userRating: null,
+                        poster: "https://images.unsplash.com/photo-1635805737707-575885ab0820?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80",
+                        description: "迈尔斯·莫拉莱斯回归，与格温·斯泰西重聚，并加入了新组建的蜘蛛侠团队，与威胁整个多元宇宙的強大恶势力对抗。",
+                        director: "乔伊姆·多斯·桑托斯",
+                        writer: "菲尔·罗德, 克里斯托弗·米勒",
+                        actors: "沙梅克·摩尔, 海莉·斯坦菲尔德",
+                        language: "英语",
+                        isNew: true,
+                        isFeatured: false,
+                        popularity: 90
+                    },
+                    {
+                        id: 4,
+                        title: "疾速追杀4",
+                        year: 2023,
+                        duration: "169分钟",
+                        genre: "动作/惊悚",
+                        category: "action",
+                        rating: 8.5,
+                        userRating: null,
+                        poster: "https://images.unsplash.com/photo-1489599809516-9827b6d1cf13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80",
+                        description: "约翰·威克发现了击败高桌会的方法。但在获得自由之前，他必须先面对一位拥有强大全球联盟的新敌人。",
+                        director: "查德·斯塔赫斯基",
+                        writer: "谢伊·哈顿, 迈克尔·芬奇",
+                        actors: "基努·里维斯, 甄子丹, 比尔·斯卡斯加德",
+                        language: "英语",
+                        isNew: false,
+                        isFeatured: false,
+                        popularity: 88
+                    },
+                    {
+                        id: 5,
+                        title: "银河护卫队3",
+                        year: 2023,
+                        duration: "150分钟",
+                        genre: "科幻/冒险",
+                        category: "sci-fi",
+                        rating: 8.4,
+                        userRating: null,
+                        poster: "https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80",
+                        description: "彼得·奎尔仍在为失去卡魔拉而伤心，他必须召集他的团队保卫宇宙，同时保护火箭浣熊。如果任务失败，这可能意味着银河护卫队的终结。",
+                        director: "詹姆斯·古恩",
+                        writer: "詹姆斯·古恩",
+                        actors: "克里斯·帕拉特, 佐伊·索尔达娜, 戴夫·巴蒂斯塔",
+                        language: "英语",
+                        isNew: false,
+                        isFeatured: false,
+                        popularity: 87
+                    },
+                    {
+                        id: 6,
+                        title: "碟中谍7：致命清算（上）",
+                        year: 2023,
+                        duration: "163分钟",
+                        genre: "动作/冒险",
+                        category: "action",
+                        rating: 8.2,
+                        userRating: null,
+                        poster: "https://images.unsplash.com/photo-1534447677768-be436bb09401?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1194&q=80",
+                        description: "伊森·亨特和他的IMF小队必须追踪一种威胁全人类生存的新武器，这让他们与一个神秘而强大的敌人发生冲突。",
+                        director: "克里斯托弗·麦奎里",
+                        writer: "克里斯托弗·麦奎里",
+                        actors: "汤姆·克鲁斯, 海莉·阿特维尔, 文·瑞姆斯",
+                        language: "英语",
+                        isNew: true,
+                        isFeatured: false,
+                        popularity: 85
+                    },
+                    {
+                        id: 7,
+                        title: "长安三万里",
+                        year: 2023,
+                        duration: "168分钟",
+                        genre: "动画/历史",
+                        category: "animation",
+                        rating: 8.5,
+                        userRating: null,
+                        poster: "https://images.unsplash.com/photo-1489599809516-9827b6d1cf13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80",
+                        description: "安史之乱爆发后数年，吐蕃大军攻打西南。大唐节度使高适交战不利，长安岌岌可危。困守孤城的高适向监军太监回忆起自己与李白的一生往事。",
+                        director: "谢君伟, 邹靖",
+                        writer: "红泥小火炉",
+                        actors: "杨天翔, 凌振赫, 吴俊全",
+                        language: "汉语普通话",
+                        isNew: true,
+                        isFeatured: false,
+                        popularity: 84
+                    },
+                    {
+                        id: 8,
+                        title: "夺宝奇兵：命运转盘",
+                        year: 2023,
+                        duration: "154分钟",
+                        genre: "动作/冒险",
+                        category: "action",
+                        rating: 7.2,
+                        userRating: null,
+                        poster: "https://images.unsplash.com/photo-1635805737707-575885ab0820?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80",
+                        description: "印第安纳·琼斯博士即将退休，但他的教女发现了一个可以改变历史走向的宝物，两人由此展开了一场跨越时空的冒险。",
+                        director: "詹姆斯·曼高德",
+                        writer: "杰斯·巴特沃斯, 约翰-亨利·巴特沃斯",
+                        actors: "哈里森·福特, 菲比·沃勒-布里奇, 麦斯·米科尔森",
+                        language: "英语",
+                        isNew: false,
+                        isFeatured: false,
+                        popularity: 80
+                    },
+                    {
+                        id: 9,
+                        title: "消失的她",
+                        year: 2023,
+                        duration: "122分钟",
+                        genre: "悬疑/犯罪",
+                        category: "drama",
+                        rating: 7.5,
+                        userRating: null,
+                        poster: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1194&q=80",
+                        description: "何非的妻子李木子在结婚周年旅行中离奇消失，在何非苦寻无果之时妻子再次现身，何非却坚持眼前的陌生女人并非妻子，随着金牌律师陈麦介入到这起离奇案件中，更多的谜团慢慢浮现。",
+                        director: "崔睿, 刘翔",
+                        writer: "陈思诚",
+                        actors: "朱一龙, 倪妮, 文咏珊",
+                        language: "汉语普通话",
+                        isNew: true,
+                        isFeatured: false,
+                        popularity: 86
+                    },
+                    {
+                        id: 10,
+                        title: "芭比",
+                        year: 2023,
+                        duration: "114分钟",
+                        genre: "喜剧/奇幻",
+                        category: "comedy",
+                        rating: 8.0,
+                        userRating: null,
+                        poster: "https://images.unsplash.com/photo-1531259683007-016a7b628fc3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1194&q=80",
+                        description: "芭比和肯在芭比乐园过着梦幻般的生活，直到有一天他们获得了进入现实世界的机会，并由此引发了一系列自我发现和身份认同的冒险。",
+                        director: "格蕾塔·葛韦格",
+                        writer: "格蕾塔·葛韦格, 诺亚·鲍姆巴赫",
+                        actors: "玛格特·罗比, 瑞恩·高斯林, 亚美莉卡·费雷拉",
+                        language: "英语",
+                        isNew: true,
+                        isFeatured: false,
+                        popularity: 89
+                    }
+                ];
+                
+                // 模拟用户数据
+                this.users = [
+                    { id: 1, username: "影迷小王", email: "user@example.com", password: "password123" }
+                ];
+                
+                // 当前登录用户
+                this.currentUser = null;
+                
+                // 收藏夹
+                this.favorites = [];
+                
+                // 从本地存储加载数据
+                this.loadFromStorage();
             }
-        ];
+            
+            // 从本地存储加载数据
+            loadFromStorage() {
+                const userData = localStorage.getItem('movieAppUser');
+                const favoritesData = localStorage.getItem('movieAppFavorites');
+                const ratingsData = localStorage.getItem('movieAppRatings');
+                
+                if (userData) {
+                    this.currentUser = JSON.parse(userData);
+                }
+                
+                if (favoritesData) {
+                    this.favorites = JSON.parse(favoritesData);
+                }
+                
+                if (ratingsData) {
+                    const userRatings = JSON.parse(ratingsData);
+                    // 将用户评分应用到电影数据
+                    this.movies.forEach(movie => {
+                        if (userRatings[movie.id]) {
+                            movie.userRating = userRatings[movie.id];
+                        }
+                    });
+                }
+            }
+            
+            // 保存到本地存储
+            saveToStorage() {
+                if (this.currentUser) {
+                    localStorage.setItem('movieAppUser', JSON.stringify(this.currentUser));
+                }
+                
+                localStorage.setItem('movieAppFavorites', JSON.stringify(this.favorites));
+                
+                // 保存用户评分
+                const userRatings = {};
+                this.movies.forEach(movie => {
+                    if (movie.userRating) {
+                        userRatings[movie.id] = movie.userRating;
+                    }
+                });
+                localStorage.setItem('movieAppRatings', JSON.stringify(userRatings));
+            }
+            
+            // 模拟API延迟
+            delay(ms) {
+                return new Promise(resolve => setTimeout(resolve, ms));
+            }
+            
+            // 获取电影列表
+            async getMovies(filters = {}) {
+                await this.delay(300); // 模拟网络延迟
+                
+                let filteredMovies = [...this.movies];
+                
+                // 应用分类筛选
+                if (filters.category && filters.category !== 'all') {
+                    filteredMovies = filteredMovies.filter(movie => movie.category === filters.category);
+                }
+                
+                // 应用年份筛选
+                if (filters.year) {
+                    filteredMovies = filteredMovies.filter(movie => movie.year == filters.year);
+                }
+                
+                // 应用搜索筛选
+                if (filters.search) {
+                    const searchTerm = filters.search.toLowerCase();
+                    filteredMovies = filteredMovies.filter(movie => 
+                        movie.title.toLowerCase().includes(searchTerm) ||
+                        movie.description.toLowerCase().includes(searchTerm) ||
+                        movie.director.toLowerCase().includes(searchTerm) ||
+                        movie.actors.toLowerCase().includes(searchTerm)
+                    );
+                }
+                
+                // 应用排序
+                if (filters.sort) {
+                    switch(filters.sort) {
+                        case 'rating':
+                            filteredMovies.sort((a, b) => b.rating - a.rating);
+                            break;
+                        case 'newest':
+                            filteredMovies.sort((a, b) => b.year - a.year);
+                            break;
+                        case 'popular':
+                            filteredMovies.sort((a, b) => b.popularity - a.popularity);
+                            break;
+                    }
+                }
+                
+                // 分页逻辑
+                const page = filters.page || 1;
+                const limit = filters.limit || 8;
+                const startIndex = (page - 1) * limit;
+                const endIndex = startIndex + limit;
+                const paginatedMovies = filteredMovies.slice(startIndex, endIndex);
+                
+                return {
+                    movies: paginatedMovies,
+                    total: filteredMovies.length,
+                    page,
+                    totalPages: Math.ceil(filteredMovies.length / limit)
+                };
+            }
+            
+            // 获取特色电影
+            async getFeaturedMovie() {
+                await this.delay(200);
+                return this.movies.find(movie => movie.isFeatured);
+            }
+            
+            // 获取新电影
+            async getNewMovies(limit = 4) {
+                await this.delay(200);
+                return this.movies
+                    .filter(movie => movie.isNew)
+                    .sort((a, b) => b.year - a.year)
+                    .slice(0, limit);
+            }
+            
+            // 获取热门电影
+            async getPopularMovies(limit = 8) {
+                await this.delay(200);
+                return this.movies
+                    .sort((a, b) => b.popularity - a.popularity)
+                    .slice(0, limit);
+            }
+            
+            // 根据ID获取电影
+            async getMovieById(id) {
+                await this.delay(200);
+                return this.movies.find(movie => movie.id == id);
+            }
+            
+            // 用户登录
+            async login(email, password) {
+                await this.delay(500);
+                const user = this.users.find(u => u.email === email && u.password === password);
+                
+                if (user) {
+                    this.currentUser = { id: user.id, username: user.username, email: user.email };
+                    this.saveToStorage();
+                    return { success: true, user: this.currentUser };
+                } else {
+                    return { success: false, message: "邮箱或密码错误" };
+                }
+            }
+            
+            // 用户注册
+            async register(username, email, password) {
+                await this.delay(500);
+                
+                // 检查邮箱是否已存在
+                const existingUser = this.users.find(u => u.email === email);
+                if (existingUser) {
+                    return { success: false, message: "该邮箱已被注册" };
+                }
+                
+                // 创建新用户
+                const newUser = {
+                    id: this.users.length + 1,
+                    username,
+                    email,
+                    password
+                };
+                
+                this.users.push(newUser);
+                this.currentUser = { id: newUser.id, username: newUser.username, email: newUser.email };
+                this.saveToStorage();
+                
+                return { success: true, user: this.currentUser };
+            }
+            
+            // 用户登出
+            logout() {
+                this.currentUser = null;
+                localStorage.removeItem('movieAppUser');
+                return { success: true };
+            }
+            
+            // 添加/移除收藏
+            async toggleFavorite(movieId) {
+                await this.delay(200);
+                
+                if (!this.currentUser) {
+                    return { success: false, message: "请先登录" };
+                }
+                
+                const index = this.favorites.indexOf(movieId);
+                
+                if (index === -1) {
+                    this.favorites.push(movieId);
+                } else {
+                    this.favorites.splice(index, 1);
+                }
+                
+                this.saveToStorage();
+                return { 
+                    success: true, 
+                    isFavorite: index === -1,
+                    message: index === -1 ? "已添加到收藏" : "已从收藏中移除"
+                };
+            }
+            
+            // 检查是否已收藏
+            isFavorite(movieId) {
+                return this.favorites.includes(movieId);
+            }
+            
+            // 获取收藏列表
+            async getFavorites() {
+                await this.delay(300);
+                return this.movies.filter(movie => this.favorites.includes(movie.id));
+            }
+            
+            // 添加评分
+            async addRating(movieId, rating) {
+                await this.delay(300);
+                
+                if (!this.currentUser) {
+                    return { success: false, message: "请先登录" };
+                }
+                
+                const movie = this.movies.find(m => m.id == movieId);
+                if (movie) {
+                    movie.userRating = rating;
+                    this.saveToStorage();
+                    return { success: true, rating };
+                }
+                
+                return { success: false, message: "电影不存在" };
+            }
+        }
 
-        // DOM元素
-        const moviesGrid = document.getElementById('moviesGrid');
-        const newMoviesGrid = document.getElementById('newMoviesGrid');
-        const movieModal = document.getElementById('movieModal');
-        const closeModal = document.getElementById('closeModal');
-        const modalPoster = document.getElementById('modalPoster');
-        const modalTitle = document.getElementById('modalTitle');
-        const modalRating = document.getElementById('modalRating');
-        const modalYear = document.getElementById('modalYear');
-        const modalDuration = document.getElementById('modalDuration');
-        const modalGenre = document.getElementById('modalGenre');
-        const modalDescription = document.getElementById('modalDescription');
-        const modalDirector = document.getElementById('modalDirector');
-        const modalWriter = document.getElementById('modalWriter');
-        const modalActors = document.getElementById('modalActors');
-        const modalLanguage = document.getElementById('modalLanguage');
-        const searchBox = document.querySelector('.search-box');
-        const categories = document.querySelectorAll('.category');
-        const yearFilter = document.getElementById('yearFilter');
-        const sortFilter = document.getElementById('sortFilter');
-        const addToFavoritesBtn = document.getElementById('addToFavorites');
-        const rateMovieBtn = document.getElementById('rateMovie');
+        // 应用状态管理
+        class AppState {
+            constructor() {
+                this.currentCategory = 'all';
+                this.currentYear = '';
+                this.currentSort = 'rating';
+                this.currentSearch = '';
+                this.currentPage = 1;
+                this.moviesPerPage = 8;
+                this.currentMovie = null;
+            }
+            
+            updateFilters(category, year, sort, search, page = 1) {
+                if (category !== undefined) this.currentCategory = category;
+                if (year !== undefined) this.currentYear = year;
+                if (sort !== undefined) this.currentSort = sort;
+                if (search !== undefined) this.currentSearch = search;
+                if (page !== undefined) this.currentPage = page;
+            }
+            
+            getFilters() {
+                return {
+                    category: this.currentCategory,
+                    year: this.currentYear,
+                    sort: this.currentSort,
+                    search: this.currentSearch,
+                    page: this.currentPage,
+                    limit: this.moviesPerPage
+                };
+            }
+        }
 
-        // 当前选中的电影
-        let currentMovie = null;
-        let favoriteMovies = [];
+        // DOM元素引用
+        const dom = {
+            // 导航元素
+            categories: document.getElementById('categories'),
+            yearFilter: document.getElementById('yearFilter'),
+            sortFilter: document.getElementById('sortFilter'),
+            searchBox: document.getElementById('searchBox'),
+            
+            // 内容区域
+            featuredMovie: document.getElementById('featuredMovie'),
+            moviesGrid: document.getElementById('moviesGrid'),
+            newMoviesGrid: document.getElementById('newMoviesGrid'),
+            moviesLoader: document.getElementById('moviesLoader'),
+            
+            // 分页
+            pagination: document.getElementById('pagination'),
+            prevPage: document.getElementById('prevPage'),
+            nextPage: document.getElementById('nextPage'),
+            pageInfo: document.getElementById('pageInfo'),
+            
+            // 模态框
+            movieModal: document.getElementById('movieModal'),
+            closeModal: document.getElementById('closeModal'),
+            modalPoster: document.getElementById('modalPoster'),
+            modalTitle: document.getElementById('modalTitle'),
+            modalRating: document.getElementById('modalRating'),
+            modalYear: document.getElementById('modalYear'),
+            modalDuration: document.getElementById('modalDuration'),
+            modalGenre: document.getElementById('modalGenre'),
+            modalDescription: document.getElementById('modalDescription'),
+            modalDirector: document.getElementById('modalDirector'),
+            modalWriter: document.getElementById('modalWriter'),
+            modalActors: document.getElementById('modalActors'),
+            modalLanguage: document.getElementById('modalLanguage'),
+            
+            // 按钮
+            watchMovie: document.getElementById('watchMovie'),
+            addToFavorites: document.getElementById('addToFavorites'),
+            rateMovieBtn: document.getElementById('rateMovieBtn'),
+            
+            // 用户相关
+            userStatus: document.getElementById('userStatus'),
+            loginLink: document.getElementById('loginLink'),
+            favoritesLink: document.getElementById('favoritesLink'),
+            homeLink: document.getElementById('homeLink'),
+            
+            // 认证模态框
+            authModal: document.getElementById('authModal'),
+            loginTab: document.getElementById('loginTab'),
+            registerTab: document.getElementById('registerTab'),
+            loginForm: document.getElementById('loginForm'),
+            registerForm: document.getElementById('registerForm'),
+            
+            // 评分模态框
+            ratingModal: document.getElementById('ratingModal'),
+            ratingMovieTitle: document.getElementById('ratingMovieTitle'),
+            ratingStars: document.querySelectorAll('.rating-star'),
+            submitRating: document.getElementById('submitRating'),
+            cancelRating: document.getElementById('cancelRating')
+        };
+
+        // 初始化应用
+        const movieAPI = new MovieAPI();
+        const appState = new AppState();
+        let selectedRating = 0;
+        let movieToRate = null;
 
         // 初始化页面
         document.addEventListener('DOMContentLoaded', function() {
-            renderMovies();
+            initApp();
             setupEventListeners();
         });
 
-        // 渲染电影列表
-        function renderMovies() {
-            // 清空网格
-            moviesGrid.innerHTML = '';
-            newMoviesGrid.innerHTML = '';
+        // 初始化应用
+        async function initApp() {
+            // 更新用户界面状态
+            updateUserUI();
             
-            // 分离热门电影和新电影
-            const popularMovies = movies.filter(movie => !movie.isNew);
-            const newMovies = movies.filter(movie => movie.isNew);
+            // 加载特色电影
+            loadFeaturedMovie();
             
-            // 渲染热门电影
-            popularMovies.forEach(movie => {
-                moviesGrid.appendChild(createMovieCard(movie));
+            // 加载热门电影
+            loadMovies();
+            
+            // 加载新电影
+            loadNewMovies();
+        }
+
+        // 设置事件监听器
+        function setupEventListeners() {
+            // 搜索功能
+            dom.searchBox.addEventListener('input', debounce(function() {
+                appState.updateFilters(undefined, undefined, undefined, this.value.trim(), 1);
+                loadMovies();
+            }, 300));
+            
+            // 分类筛选
+            dom.categories.addEventListener('click', function(e) {
+                if (e.target.classList.contains('category')) {
+                    // 更新活动类别
+                    document.querySelectorAll('.category').forEach(cat => cat.classList.remove('active'));
+                    e.target.classList.add('active');
+                    
+                    // 更新状态并加载电影
+                    const category = e.target.dataset.category;
+                    appState.updateFilters(category, undefined, undefined, undefined, 1);
+                    loadMovies();
+                }
             });
+            
+            // 年份筛选
+            dom.yearFilter.addEventListener('change', function() {
+                appState.updateFilters(undefined, this.value, undefined, undefined, 1);
+                loadMovies();
+            });
+            
+            // 排序筛选
+            dom.sortFilter.addEventListener('change', function() {
+                appState.updateFilters(undefined, undefined, this.value, undefined, 1);
+                loadMovies();
+            });
+            
+            // 分页按钮
+            dom.prevPage.addEventListener('click', function() {
+                if (appState.currentPage > 1) {
+                    appState.currentPage--;
+                    loadMovies();
+                }
+            });
+            
+            dom.nextPage.addEventListener('click', function() {
+                // 这里假设总页数已知，实际应用中应从API响应中获取
+                appState.currentPage++;
+                loadMovies();
+            });
+            
+            // 电影详情模态框
+            dom.closeModal.addEventListener('click', closeMovieModal);
+            dom.movieModal.addEventListener('click', function(e) {
+                if (e.target === dom.movieModal) {
+                    closeMovieModal();
+                }
+            });
+            
+            // 收藏按钮
+            dom.addToFavorites.addEventListener('click', async function() {
+                if (!movieAPI.currentUser) {
+                    showNotification('请先登录以使用收藏功能');
+                    openAuthModal();
+                    return;
+                }
+                
+                if (appState.currentMovie) {
+                    const result = await movieAPI.toggleFavorite(appState.currentMovie.id);
+                    
+                    if (result.success) {
+                        // 更新按钮状态
+                        updateFavoriteButton(result.isFavorite);
+                        showNotification(result.message);
+                        
+                        // 更新电影卡片中的收藏状态
+                        updateMovieCardFavoriteStatus(appState.currentMovie.id, result.isFavorite);
+                    }
+                }
+            });
+            
+            // 评分按钮
+            dom.rateMovieBtn.addEventListener('click', function() {
+                if (!movieAPI.currentUser) {
+                    showNotification('请先登录以评价电影');
+                    openAuthModal();
+                    return;
+                }
+                
+                if (appState.currentMovie) {
+                    openRatingModal();
+                }
+            });
+            
+            // 观看按钮
+            dom.watchMovie.addEventListener('click', function() {
+                if (appState.currentMovie) {
+                    showNotification(`即将播放《${appState.currentMovie.title}》`);
+                    closeMovieModal();
+                }
+            });
+            
+            // 用户相关
+            dom.loginLink.addEventListener('click', function() {
+                if (movieAPI.currentUser) {
+                    // 显示用户菜单或执行登出
+                    const confirmLogout = confirm(`确定要登出 ${movieAPI.currentUser.username} 吗？`);
+                    if (confirmLogout) {
+                        movieAPI.logout();
+                        updateUserUI();
+                        showNotification('已成功登出');
+                    }
+                } else {
+                    openAuthModal();
+                }
+            });
+            
+            dom.favoritesLink.addEventListener('click', async function() {
+                if (!movieAPI.currentUser) {
+                    showNotification('请先登录以查看收藏');
+                    openAuthModal();
+                    return;
+                }
+                
+                // 显示收藏电影
+                showFavorites();
+            });
+            
+            dom.homeLink.addEventListener('click', function() {
+                // 重置筛选并加载电影
+                document.querySelectorAll('.category').forEach(cat => cat.classList.remove('active'));
+                document.querySelector('.category[data-category="all"]').classList.add('active');
+                
+                dom.yearFilter.value = '';
+                dom.sortFilter.value = 'rating';
+                dom.searchBox.value = '';
+                
+                appState.updateFilters('all', '', 'rating', '', 1);
+                loadMovies();
+                loadNewMovies();
+                
+                // 滚动到顶部
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            
+            // 认证模态框
+            dom.loginTab.addEventListener('click', function() {
+                dom.loginTab.classList.add('active');
+                dom.registerTab.classList.remove('active');
+                dom.loginForm.style.display = 'block';
+                dom.registerForm.style.display = 'none';
+            });
+            
+            dom.registerTab.addEventListener('click', function() {
+                dom.registerTab.classList.add('active');
+                dom.loginTab.classList.remove('active');
+                dom.registerForm.style.display = 'block';
+                dom.loginForm.style.display = 'none';
+            });
+            
+            // 登录表单提交
+            dom.loginForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const email = document.getElementById('loginEmail').value;
+                const password = document.getElementById('loginPassword').value;
+                
+                const result = await movieAPI.login(email, password);
+                
+                if (result.success) {
+                    showNotification(`欢迎回来，${result.user.username}！`);
+                    closeAuthModal();
+                    updateUserUI();
+                    
+                    // 重置表单
+                    this.reset();
+                } else {
+                    showNotification(result.message);
+                }
+            });
+            
+            // 注册表单提交
+            dom.registerForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const username = document.getElementById('registerUsername').value;
+                const email = document.getElementById('registerEmail').value;
+                const password = document.getElementById('registerPassword').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+                
+                if (password !== confirmPassword) {
+                    showNotification('两次输入的密码不一致');
+                    return;
+                }
+                
+                const result = await movieAPI.register(username, email, password);
+                
+                if (result.success) {
+                    showNotification(`注册成功，欢迎 ${result.user.username}！`);
+                    closeAuthModal();
+                    updateUserUI();
+                    
+                    // 重置表单
+                    this.reset();
+                    dom.loginTab.click();
+                } else {
+                    showNotification(result.message);
+                }
+            });
+            
+            // 评分模态框
+            dom.ratingStars.forEach(star => {
+                star.addEventListener('click', function() {
+                    const rating = parseInt(this.dataset.rating);
+                    selectedRating = rating;
+                    
+                    // 更新星星显示
+                    dom.ratingStars.forEach((s, index) => {
+                        if (index < rating) {
+                            s.textContent = '★';
+                            s.classList.add('active');
+                        } else {
+                            s.textContent = '☆';
+                            s.classList.remove('active');
+                        }
+                    });
+                });
+                
+                star.addEventListener('mouseover', function() {
+                    const rating = parseInt(this.dataset.rating);
+                    
+                    // 悬停效果
+                    dom.ratingStars.forEach((s, index) => {
+                        if (index < rating) {
+                            s.textContent = '★';
+                            s.classList.add('active');
+                        } else {
+                            s.textContent = '☆';
+                            s.classList.remove('active');
+                        }
+                    });
+                });
+                
+                star.addEventListener('mouseout', function() {
+                    // 恢复选中的评分
+                    dom.ratingStars.forEach((s, index) => {
+                        if (index < selectedRating) {
+                            s.textContent = '★';
+                            s.classList.add('active');
+                        } else {
+                            s.textContent = '☆';
+                            s.classList.remove('active');
+                        }
+                    });
+                });
+            });
+            
+            dom.submitRating.addEventListener('click', async function() {
+                if (selectedRating === 0) {
+                    showNotification('请选择评分');
+                    return;
+                }
+                
+                if (movieToRate) {
+                    const result = await movieAPI.addRating(movieToRate.id, selectedRating);
+                    
+                    if (result.success) {
+                        showNotification(`感谢您为《${movieToRate.title}》评分：${selectedRating}星`);
+                        closeRatingModal();
+                        
+                        // 更新电影详情模态框中的评分显示
+                        if (appState.currentMovie && appState.currentMovie.id === movieToRate.id) {
+                            updateMovieRatingDisplay(movieToRate.id, selectedRating);
+                        }
+                        
+                        // 更新电影卡片中的评分显示
+                        updateMovieCardRating(movieToRate.id, selectedRating);
+                    }
+                }
+            });
+            
+            dom.cancelRating.addEventListener('click', closeRatingModal);
+            
+            // 页脚链接
+            document.querySelectorAll('.footer-links a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    if (this.id === 'footerHome') {
+                        dom.homeLink.click();
+                    } else if (this.id === 'footerMovies') {
+                        showNotification('电影库功能开发中');
+                    } else if (this.id === 'footerRanking') {
+                        showNotification('排行榜功能开发中');
+                    } else if (this.id === 'footerTrailers') {
+                        showNotification('新片预告功能开发中');
+                    } else if (this.id === 'footerCommunity') {
+                        showNotification('影评社区功能开发中');
+                    } else if (this.dataset.category) {
+                        // 点击分类链接
+                        const categoryElement = document.querySelector(`.category[data-category="${this.dataset.category}"]`);
+                        if (categoryElement) {
+                            categoryElement.click();
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }
+                    }
+                });
+            });
+        }
+
+        // 加载特色电影
+        async function loadFeaturedMovie() {
+            const featuredMovie = await movieAPI.getFeaturedMovie();
+            
+            if (featuredMovie) {
+                dom.featuredMovie.innerHTML = `
+                    <div class="featured-content">
+                        <span class="featured-tag">本周热门</span>
+                        <h2 class="featured-title">${featuredMovie.title}</h2>
+                        <p class="featured-description">${featuredMovie.description}</p>
+                        <div class="featured-actions">
+                            <button class="btn btn-primary" id="watchFeatured">
+                                <i class="fas fa-play"></i> 立即观看
+                            </button>
+                            <button class="btn btn-secondary" id="featuredDetails">
+                                <i class="fas fa-info-circle"></i> 了解更多
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                // 为特色电影按钮添加事件
+                document.getElementById('watchFeatured').addEventListener('click', function() {
+                    showNotification(`即将播放《${featuredMovie.title}》`);
+                });
+                
+                document.getElementById('featuredDetails').addEventListener('click', function() {
+                    openMovieModal(featuredMovie);
+                });
+            }
+        }
+
+        // 加载电影
+        async function loadMovies() {
+            // 显示加载指示器
+            dom.moviesLoader.style.display = 'block';
+            dom.moviesGrid.innerHTML = '';
+            dom.moviesGrid.appendChild(dom.moviesLoader);
+            
+            // 获取筛选参数
+            const filters = appState.getFilters();
+            
+            // 从API获取电影
+            const result = await movieAPI.getMovies(filters);
+            
+            // 隐藏加载指示器
+            dom.moviesLoader.style.display = 'none';
+            
+            // 清空网格
+            dom.moviesGrid.innerHTML = '';
+            
+            if (result.movies.length === 0) {
+                dom.moviesGrid.innerHTML = `
+                    <div style="grid-column: 1/-1; text-align: center; padding: 60px 20px;">
+                        <i class="fas fa-film" style="font-size: 4rem; color: #555; margin-bottom: 20px;"></i>
+                        <h3 style="color: #aaa; margin-bottom: 10px;">未找到相关电影</h3>
+                        <p style="color: #777;">尝试调整筛选条件或搜索关键词</p>
+                    </div>
+                `;
+                dom.pagination.style.display = 'none';
+                return;
+            }
+            
+            // 渲染电影
+            result.movies.forEach(movie => {
+                dom.moviesGrid.appendChild(createMovieCard(movie));
+            });
+            
+            // 显示分页控件（如果有多个页面）
+            if (result.totalPages > 1) {
+                dom.pagination.style.display = 'block';
+                dom.pageInfo.textContent = `第 ${result.page} 页，共 ${result.totalPages} 页`;
+                
+                // 更新分页按钮状态
+                dom.prevPage.disabled = result.page <= 1;
+                dom.nextPage.disabled = result.page >= result.totalPages;
+            } else {
+                dom.pagination.style.display = 'none';
+            }
+        }
+
+        // 加载新电影
+        async function loadNewMovies() {
+            const newMovies = await movieAPI.getNewMovies(4);
+            
+            // 清空网格
+            dom.newMoviesGrid.innerHTML = '';
             
             // 渲染新电影
             newMovies.forEach(movie => {
-                newMoviesGrid.appendChild(createMovieCard(movie));
+                dom.newMoviesGrid.appendChild(createMovieCard(movie));
             });
+        }
+
+        // 显示收藏电影
+        async function showFavorites() {
+            const favorites = await movieAPI.getFavorites();
+            
+            if (favorites.length === 0) {
+                dom.moviesGrid.innerHTML = `
+                    <div style="grid-column: 1/-1; text-align: center; padding: 60px 20px;">
+                        <i class="far fa-heart" style="font-size: 4rem; color: #555; margin-bottom: 20px;"></i>
+                        <h3 style="color: #aaa; margin-bottom: 10px;">收藏夹为空</h3>
+                        <p style="color: #777;">您还没有收藏任何电影</p>
+                    </div>
+                `;
+                dom.pagination.style.display = 'none';
+                
+                // 更新标题
+                document.querySelector('.section-title h2').textContent = '我的收藏';
+                return;
+            }
+            
+            // 更新标题
+            document.querySelector('.section-title h2').textContent = '我的收藏';
+            
+            // 清空网格并渲染收藏电影
+            dom.moviesGrid.innerHTML = '';
+            favorites.forEach(movie => {
+                dom.moviesGrid.appendChild(createMovieCard(movie));
+            });
+            
+            dom.pagination.style.display = 'none';
         }
 
         // 创建电影卡片
@@ -1024,8 +2122,11 @@
             card.dataset.id = movie.id;
             
             // 检查是否已收藏
-            const isFavorite = favoriteMovies.includes(movie.id);
+            const isFavorite = movieAPI.isFavorite(movie.id);
             const favoriteIcon = isFavorite ? 'fas' : 'far';
+            
+            // 使用用户评分（如果有）否则使用默认评分
+            const displayRating = movie.userRating || movie.rating;
             
             card.innerHTML = `
                 <img src="${movie.poster}" alt="${movie.title}" class="movie-poster">
@@ -1037,11 +2138,12 @@
                     </div>
                     <div class="rating">
                         <i class="fas fa-star"></i>
-                        <span>${movie.rating}</span>
+                        <span>${displayRating.toFixed(1)}</span>
+                        ${movie.userRating ? '<span style="color: #ff6b81; font-size: 0.8rem; margin-left: 5px;">(已评)</span>' : ''}
                     </div>
                     <p class="movie-description">${movie.description}</p>
                     <div class="movie-actions">
-                        <button class="action-btn watch-btn">
+                        <button class="action-btn watch-btn" data-id="${movie.id}">
                             <i class="fas fa-play"></i> 播放
                         </button>
                         <button class="action-btn favorite-btn" data-id="${movie.id}">
@@ -1059,111 +2161,207 @@
                 }
             });
             
-            // 添加收藏按钮事件
-            const favoriteBtn = card.querySelector('.favorite-btn');
-            favoriteBtn.addEventListener('click', function(e) {
+            // 播放按钮
+            card.querySelector('.watch-btn').addEventListener('click', function(e) {
                 e.stopPropagation();
-                toggleFavorite(movie.id, favoriteBtn);
+                showNotification(`即将播放《${movie.title}》`);
+            });
+            
+            // 收藏按钮
+            card.querySelector('.favorite-btn').addEventListener('click', async function(e) {
+                e.stopPropagation();
+                
+                if (!movieAPI.currentUser) {
+                    showNotification('请先登录以使用收藏功能');
+                    openAuthModal();
+                    return;
+                }
+                
+                const result = await movieAPI.toggleFavorite(movie.id);
+                
+                if (result.success) {
+                    // 更新按钮图标
+                    const icon = this.querySelector('i');
+                    if (result.isFavorite) {
+                        icon.className = 'fas fa-heart';
+                        this.innerHTML = '<i class="fas fa-heart"></i> 已收藏';
+                    } else {
+                        icon.className = 'far fa-heart';
+                        this.innerHTML = '<i class="far fa-heart"></i> 收藏';
+                    }
+                    
+                    showNotification(result.message);
+                    
+                    // 如果当前打开了电影详情模态框且是同一部电影，更新模态框按钮
+                    if (appState.currentMovie && appState.currentMovie.id === movie.id) {
+                        updateFavoriteButton(result.isFavorite);
+                    }
+                }
             });
             
             return card;
         }
 
         // 打开电影详情模态框
-        function openMovieModal(movie) {
-            currentMovie = movie;
+        async function openMovieModal(movie) {
+            appState.currentMovie = movie;
+            
+            // 获取最新电影数据（包含用户评分）
+            const movieData = await movieAPI.getMovieById(movie.id);
             
             // 检查是否已收藏
-            const isFavorite = favoriteMovies.includes(movie.id);
+            const isFavorite = movieAPI.isFavorite(movie.id);
+            
+            // 使用用户评分（如果有）否则使用默认评分
+            const displayRating = movieData.userRating || movieData.rating;
+            const ratingText = movieData.userRating 
+                ? `<i class="fas fa-star"></i> ${displayRating.toFixed(1)} (您的评分)`
+                : `<i class="fas fa-star"></i> ${displayRating.toFixed(1)}`;
             
             // 更新模态框内容
-            modalPoster.src = movie.poster;
-            modalPoster.alt = movie.title;
-            modalTitle.textContent = movie.title;
-            modalRating.innerHTML = `<i class="fas fa-star"></i> ${movie.rating}`;
-            modalYear.textContent = movie.year;
-            modalDuration.textContent = movie.duration;
-            modalGenre.textContent = movie.genre;
-            modalDescription.textContent = movie.description;
-            modalDirector.textContent = movie.director;
-            modalWriter.textContent = movie.writer;
-            modalActors.textContent = movie.actors;
-            modalLanguage.textContent = movie.language;
+            dom.modalPoster.src = movieData.poster;
+            dom.modalPoster.alt = movieData.title;
+            dom.modalTitle.textContent = movieData.title;
+            dom.modalRating.innerHTML = ratingText;
+            dom.modalYear.textContent = movieData.year;
+            dom.modalDuration.textContent = movieData.duration;
+            dom.modalGenre.textContent = movieData.genre;
+            dom.modalDescription.textContent = movieData.description;
+            dom.modalDirector.textContent = movieData.director;
+            dom.modalWriter.textContent = movieData.writer;
+            dom.modalActors.textContent = movieData.actors;
+            dom.modalLanguage.textContent = movieData.language;
             
             // 更新收藏按钮
-            const favoriteIcon = addToFavoritesBtn.querySelector('i');
-            if (isFavorite) {
-                addToFavoritesBtn.innerHTML = '<i class="fas fa-heart"></i> 已收藏';
-                addToFavoritesBtn.style.backgroundColor = 'rgba(255, 71, 87, 0.2)';
-                addToFavoritesBtn.style.color = '#ff6b81';
-            } else {
-                addToFavoritesBtn.innerHTML = '<i class="far fa-heart"></i> 加入收藏';
-                addToFavoritesBtn.style.backgroundColor = '';
-                addToFavoritesBtn.style.color = '';
-            }
+            updateFavoriteButton(isFavorite);
             
             // 显示模态框
-            movieModal.style.display = 'block';
+            dom.movieModal.style.display = 'block';
             document.body.style.overflow = 'hidden';
         }
 
-        // 切换收藏状态
-        function toggleFavorite(movieId, button) {
-            const index = favoriteMovies.indexOf(movieId);
-            const icon = button.querySelector('i');
+        // 关闭电影详情模态框
+        function closeMovieModal() {
+            dom.movieModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // 打开认证模态框
+        function openAuthModal() {
+            dom.authModal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
             
-            if (index === -1) {
-                // 添加到收藏
-                favoriteMovies.push(movieId);
-                icon.className = 'fas fa-heart';
-                button.innerHTML = '<i class="fas fa-heart"></i> 已收藏';
+            // 重置表单
+            dom.loginForm.reset();
+            dom.registerForm.reset();
+            dom.loginTab.click();
+        }
+
+        // 关闭认证模态框
+        function closeAuthModal() {
+            dom.authModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // 打开评分模态框
+        function openRatingModal() {
+            if (appState.currentMovie) {
+                movieToRate = appState.currentMovie;
+                dom.ratingMovieTitle.textContent = `为《${appState.currentMovie.title}》评分`;
                 
-                // 如果当前打开了模态框且是同一部电影，更新模态框按钮
-                if (currentMovie && currentMovie.id === movieId) {
-                    addToFavoritesBtn.innerHTML = '<i class="fas fa-heart"></i> 已收藏';
-                    addToFavoritesBtn.style.backgroundColor = 'rgba(255, 71, 87, 0.2)';
-                    addToFavoritesBtn.style.color = '#ff6b81';
-                }
+                // 重置星星
+                selectedRating = 0;
+                dom.ratingStars.forEach(star => {
+                    star.textContent = '☆';
+                    star.classList.remove('active');
+                });
                 
-                // 显示通知
-                showNotification('已添加到收藏');
+                dom.ratingModal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        // 关闭评分模态框
+        function closeRatingModal() {
+            dom.ratingModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // 更新用户界面
+        function updateUserUI() {
+            if (movieAPI.currentUser) {
+                dom.userStatus.textContent = movieAPI.currentUser.username;
+                dom.loginLink.innerHTML = '<i class="fas fa-user"></i> ' + movieAPI.currentUser.username;
             } else {
-                // 从收藏中移除
-                favoriteMovies.splice(index, 1);
-                icon.className = 'far fa-heart';
-                button.innerHTML = '<i class="far fa-heart"></i> 收藏';
-                
-                // 如果当前打开了模态框且是同一部电影，更新模态框按钮
-                if (currentMovie && currentMovie.id === movieId) {
-                    addToFavoritesBtn.innerHTML = '<i class="far fa-heart"></i> 加入收藏';
-                    addToFavoritesBtn.style.backgroundColor = '';
-                    addToFavoritesBtn.style.color = '';
+                dom.userStatus.textContent = '登录';
+                dom.loginLink.innerHTML = '<i class="fas fa-user"></i> 登录';
+            }
+        }
+
+        // 更新收藏按钮状态
+        function updateFavoriteButton(isFavorite) {
+            if (isFavorite) {
+                dom.addToFavorites.innerHTML = '<i class="fas fa-heart"></i> 已收藏';
+                dom.addToFavorites.style.backgroundColor = 'rgba(255, 71, 87, 0.2)';
+                dom.addToFavorites.style.color = '#ff6b81';
+            } else {
+                dom.addToFavorites.innerHTML = '<i class="far fa-heart"></i> 加入收藏';
+                dom.addToFavorites.style.backgroundColor = '';
+                dom.addToFavorites.style.color = '';
+            }
+        }
+
+        // 更新电影卡片收藏状态
+        function updateMovieCardFavoriteStatus(movieId, isFavorite) {
+            const favoriteBtns = document.querySelectorAll(`.favorite-btn[data-id="${movieId}"]`);
+            favoriteBtns.forEach(btn => {
+                if (isFavorite) {
+                    btn.innerHTML = '<i class="fas fa-heart"></i> 已收藏';
+                } else {
+                    btn.innerHTML = '<i class="far fa-heart"></i> 收藏';
                 }
-                
-                // 显示通知
-                showNotification('已从收藏中移除');
+            });
+        }
+
+        // 更新电影卡片评分显示
+        function updateMovieCardRating(movieId, rating) {
+            const movieCards = document.querySelectorAll(`.movie-card[data-id="${movieId}"]`);
+            movieCards.forEach(card => {
+                const ratingElement = card.querySelector('.rating span');
+                if (ratingElement) {
+                    ratingElement.textContent = rating.toFixed(1);
+                    
+                    // 添加已评标记
+                    const ratedMark = card.querySelector('.rating span + span');
+                    if (!ratedMark) {
+                        const ratedSpan = document.createElement('span');
+                        ratedSpan.style.cssText = 'color: #ff6b81; font-size: 0.8rem; margin-left: 5px;';
+                        ratedSpan.textContent = '(已评)';
+                        ratingElement.parentNode.appendChild(ratedSpan);
+                    }
+                }
+            });
+        }
+
+        // 更新电影详情模态框中的评分显示
+        function updateMovieRatingDisplay(movieId, rating) {
+            if (appState.currentMovie && appState.currentMovie.id === movieId) {
+                dom.modalRating.innerHTML = `<i class="fas fa-star"></i> ${rating.toFixed(1)} (您的评分)`;
             }
         }
 
         // 显示通知
         function showNotification(message) {
+            // 移除现有的通知
+            const existingNotification = document.querySelector('.notification');
+            if (existingNotification) {
+                existingNotification.remove();
+            }
+            
             // 创建通知元素
             const notification = document.createElement('div');
             notification.className = 'notification';
             notification.textContent = message;
-            notification.style.cssText = `
-                position: fixed;
-                top: 100px;
-                right: 20px;
-                background-color: #1a1a2e;
-                color: white;
-                padding: 15px 25px;
-                border-radius: 8px;
-                border-left: 5px solid #ff4757;
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-                z-index: 10000;
-                animation: slideIn 0.3s ease-out;
-            `;
             
             // 添加到页面
             document.body.appendChild(notification);
@@ -1172,124 +2370,24 @@
             setTimeout(() => {
                 notification.style.animation = 'slideOut 0.3s ease-out';
                 setTimeout(() => {
-                    document.body.removeChild(notification);
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
                 }, 300);
             }, 3000);
-            
-            // 添加CSS动画
-            const style = document.createElement('style');
-            style.textContent = `
-                @keyframes slideIn {
-                    from { transform: translateX(100%); opacity: 0; }
-                    to { transform: translateX(0); opacity: 1; }
-                }
-                @keyframes slideOut {
-                    from { transform: translateX(0); opacity: 1; }
-                    to { transform: translateX(100%); opacity: 0; }
-                }
-            `;
-            document.head.appendChild(style);
         }
 
-        // 设置事件监听器
-        function setupEventListeners() {
-            // 关闭模态框
-            closeModal.addEventListener('click', closeMovieModal);
-            
-            // 点击模态框背景关闭
-            movieModal.addEventListener('click', function(e) {
-                if (e.target === movieModal) {
-                    closeMovieModal();
-                }
-            });
-            
-            // 收藏按钮点击事件
-            addToFavoritesBtn.addEventListener('click', function() {
-                if (currentMovie) {
-                    // 找到对应的收藏按钮
-                    const favoriteBtn = document.querySelector(`.favorite-btn[data-id="${currentMovie.id}"]`);
-                    if (favoriteBtn) {
-                        toggleFavorite(currentMovie.id, favoriteBtn);
-                    }
-                }
-            });
-            
-            // 评价按钮点击事件
-            rateMovieBtn.addEventListener('click', function() {
-                if (currentMovie) {
-                    alert(`为《${currentMovie.title}》评分\n请选择1-5星评分`);
-                    // 在实际应用中，这里会打开评分组件
-                }
-            });
-            
-            // 搜索功能
-            searchBox.addEventListener('input', function() {
-                const searchTerm = this.value.toLowerCase();
-                filterMovies(searchTerm);
-            });
-            
-            // 分类筛选
-            categories.forEach(category => {
-                category.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    // 移除所有active类
-                    categories.forEach(c => c.classList.remove('active'));
-                    
-                    // 为当前点击的分类添加active类
-                    this.classList.add('active');
-                    
-                    // 获取分类文本
-                    const categoryText = this.textContent;
-                    
-                    // 在实际应用中，这里会根据分类筛选电影
-                    console.log(`筛选分类: ${categoryText}`);
-                });
-            });
-            
-            // 年份筛选
-            yearFilter.addEventListener('change', function() {
-                console.log(`筛选年份: ${this.value}`);
-            });
-            
-            // 排序筛选
-            sortFilter.addEventListener('change', function() {
-                console.log(`排序方式: ${this.value}`);
-            });
-        }
-
-        // 关闭电影详情模态框
-        function closeMovieModal() {
-            movieModal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        // 过滤电影
-        function filterMovies(searchTerm) {
-            if (searchTerm.trim() === '') {
-                renderMovies();
-                return;
-            }
-            
-            const filteredMovies = movies.filter(movie => 
-                movie.title.toLowerCase().includes(searchTerm) ||
-                movie.description.toLowerCase().includes(searchTerm) ||
-                movie.director.toLowerCase().includes(searchTerm) ||
-                movie.actors.toLowerCase().includes(searchTerm)
-            );
-            
-            // 清空网格
-            moviesGrid.innerHTML = '';
-            newMoviesGrid.innerHTML = '';
-            
-            if (filteredMovies.length > 0) {
-                // 渲染过滤后的电影
-                filteredMovies.forEach(movie => {
-                    moviesGrid.appendChild(createMovieCard(movie));
-                });
-            } else {
-                moviesGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; font-size: 1.2rem; color: #aaa;">未找到相关电影</p>';
-            }
+        // 防抖函数
+        function debounce(func, wait) {
+            let timeout;
+            return function() {
+                const context = this;
+                const args = arguments;
+                clearTimeout(timeout);
+                timeout = setTimeout(() => {
+                    func.apply(context, args);
+                }, wait);
+            };
         }
     </script>
 </body>
