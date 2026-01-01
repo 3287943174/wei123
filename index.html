@@ -15,7 +15,6 @@
         }
         
         :root {
-            /* 苹果/谷歌风格颜色系统 */
             --primary-color: #007AFF;
             --primary-light: #5AC8FA;
             --primary-dark: #0051CC;
@@ -24,40 +23,28 @@
             --warning-color: #FF9500;
             --danger-color: #FF3B30;
             --info-color: #5AC8FA;
-            
-            /* 中性色调 */
             --bg-color: #F2F2F7;
             --surface-color: #FFFFFF;
             --surface-secondary: #F8F8FA;
             --surface-tertiary: #EFEFF4;
             --border-color: #C7C7CC;
             --border-light: #E5E5EA;
-            
-            /* 文字颜色 */
             --text-primary: #000000;
             --text-secondary: #3C3C43;
             --text-tertiary: #8E8E93;
             --text-on-dark: #FFFFFF;
-            
-            /* 阴影 */
             --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
             --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
             --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.12);
             --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.16);
-            
-            /* 圆角 */
             --radius-sm: 8px;
             --radius-md: 12px;
             --radius-lg: 16px;
             --radius-xl: 20px;
             --radius-full: 9999px;
-            
-            /* 过渡效果 */
             --transition-fast: 0.15s ease;
             --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            
-            /* 间距 */
             --space-xs: 4px;
             --space-sm: 8px;
             --space-md: 16px;
@@ -76,7 +63,6 @@
             -moz-osx-font-smoothing: grayscale;
         }
         
-        /* 顶部导航栏 - 类似苹果设计 */
         .navbar {
             position: fixed;
             top: 0;
@@ -205,14 +191,12 @@
             background-color: var(--primary-dark);
         }
         
-        /* 主容器 */
         .main-container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 100px var(--space-lg) var(--space-2xl);
         }
         
-        /* 英雄区域 - 类似谷歌设计 */
         .hero-section {
             text-align: center;
             margin-bottom: var(--space-2xl);
@@ -284,7 +268,6 @@
             transform: translateY(-2px);
         }
         
-        /* 快速访问区域 - 类似苹果小组件 */
         .section-header {
             display: flex;
             justify-content: space-between;
@@ -339,7 +322,6 @@
             background-color: var(--primary-dark);
         }
         
-        /* 快速访问网格 */
         .quick-access-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -396,6 +378,19 @@
             color: var(--text-on-dark);
             margin-bottom: var(--space-md);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            background-color: var(--surface-tertiary);
+        }
+        
+        .quick-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .quick-icon .default-icon {
+            font-size: 24px;
+            color: var(--text-tertiary);
         }
         
         .quick-content {
@@ -414,7 +409,6 @@
             line-height: 1.5;
         }
         
-        /* 快速访问卡片删除按钮 */
         .quick-delete-btn {
             position: absolute;
             top: 12px;
@@ -443,7 +437,6 @@
             color: var(--text-on-dark);
         }
         
-        /* 分类网格 - 类似谷歌Material Design */
         .categories-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -527,7 +520,6 @@
             color: var(--text-secondary);
         }
         
-        /* 分类卡片操作按钮 */
         .category-actions {
             position: absolute;
             top: var(--space-sm);
@@ -561,7 +553,6 @@
             border-color: var(--danger-color);
         }
         
-        /* 模态框 - 现代化设计 */
         .modal {
             display: none;
             position: fixed;
@@ -681,6 +672,19 @@
             color: var(--text-on-dark);
             flex-shrink: 0;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            background-color: var(--surface-tertiary);
+        }
+        
+        .site-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .site-icon .default-icon {
+            font-size: 20px;
+            color: var(--text-tertiary);
         }
         
         .site-info {
@@ -744,7 +748,6 @@
             background-color: #D32F2F;
         }
         
-        /* 网站卡片删除按钮 */
         .site-delete-btn {
             position: absolute;
             top: 8px;
@@ -772,7 +775,6 @@
             color: var(--text-on-dark);
         }
         
-        /* 表单模态框 */
         .form-modal-content {
             max-width: 500px;
         }
@@ -806,18 +808,12 @@
             box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
         }
         
-        .form-textarea {
-            min-height: 100px;
-            resize: vertical;
-        }
-        
         .form-actions {
             display: flex;
             gap: var(--space-md);
             margin-top: var(--space-xl);
         }
         
-        /* 底部 */
         .footer {
             background-color: var(--surface-secondary);
             border-top: 1px solid var(--border-light);
@@ -856,17 +852,6 @@
         
         .footer-link:hover {
             color: var(--primary-color);
-        }
-        
-        /* 响应式设计 */
-        @media (max-width: 1024px) {
-            .hero-title {
-                font-size: 40px;
-            }
-            
-            .categories-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            }
         }
         
         @media (max-width: 768px) {
@@ -938,40 +923,8 @@
             .hero-title {
                 font-size: 28px;
             }
-            
-            .section-title {
-                font-size: 24px;
-            }
-            
-            .modal-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: var(--space-md);
-            }
         }
         
-        /* 工具提示 */
-        .tooltip {
-            position: relative;
-        }
-        
-        .tooltip:hover::before {
-            content: attr(data-tooltip);
-            position: absolute;
-            bottom: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 8px 12px;
-            border-radius: var(--radius-sm);
-            font-size: 13px;
-            white-space: nowrap;
-            z-index: 100;
-            margin-bottom: 8px;
-        }
-        
-        /* 空状态 */
         .empty-state {
             text-align: center;
             padding: var(--space-2xl) var(--space-lg);
@@ -990,27 +943,6 @@
             margin-bottom: var(--space-sm);
         }
         
-        /* 滚动条美化 */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: var(--surface-tertiary);
-            border-radius: var(--radius-full);
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: var(--border-color);
-            border-radius: var(--radius-full);
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--text-tertiary);
-        }
-        
-        /* 选择网站模态框 */
         .select-site-item {
             background-color: var(--surface-secondary);
             border-radius: var(--radius-md);
@@ -1053,7 +985,6 @@
             color: var(--text-on-dark);
         }
         
-        /* 提示消息 */
         .toast {
             position: fixed;
             bottom: 24px;
@@ -1115,6 +1046,62 @@
         .toast-content p {
             font-size: 14px;
             color: var(--text-tertiary);
+        }
+        
+        .icon-preview-container {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .icon-preview {
+            width: 80px;
+            height: 80px;
+            border-radius: var(--radius-md);
+            background-color: var(--surface-tertiary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed var(--border-color);
+            overflow: hidden;
+        }
+        
+        .icon-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .icon-preview .default-preview {
+            font-size: 32px;
+            color: var(--text-tertiary);
+        }
+        
+        .icon-buttons {
+            display: flex;
+            gap: 8px;
+            margin-top: 8px;
+        }
+        
+        .icon-buttons .action-btn {
+            flex: 1;
+        }
+        
+        .icon-loading, .icon-error, .icon-success {
+            margin-top: 8px;
+            text-align: center;
+            font-size: 14px;
+        }
+        
+        .icon-loading {
+            color: var(--primary-color);
+        }
+        
+        .icon-error {
+            color: var(--danger-color);
+        }
+        
+        .icon-success {
+            color: var(--success-color);
         }
     </style>
 </head>
@@ -1267,30 +1254,58 @@
                         <input type="text" id="siteDescription" class="form-input" placeholder="例如：代码托管平台" required>
                     </div>
                     
+                    <!-- 网站图标选择区域 -->
                     <div class="form-group">
-                        <label for="siteIcon" class="form-label">网站图标</label>
-                        <select id="siteIcon" class="form-input">
-                            <option value="fas fa-globe">地球</option>
-                            <option value="fab fa-google">Google</option>
-                            <option value="fab fa-github">GitHub</option>
-                            <option value="fab fa-youtube">YouTube</option>
-                            <option value="fas fa-shopping-cart">购物车</option>
-                            <option value="fas fa-music">音乐</option>
-                            <option value="fas fa-film">电影</option>
-                            <option value="fas fa-gamepad">游戏</option>
-                            <option value="fas fa-tools">工具</option>
-                            <option value="fas fa-download">下载</option>
-                            <option value="fas fa-code">代码</option>
-                            <option value="fas fa-search">搜索</option>
-                            <option value="fab fa-weibo">微博</option>
-                            <option value="fab fa-weixin">微信</option>
-                            <option value="fas fa-newspaper">新闻</option>
-                            <option value="fas fa-book">书籍</option>
-                        </select>
+                        <label class="form-label">网站图标</label>
+                        
+                        <!-- 图标预览区域 -->
+                        <div class="icon-preview-container">
+                            <div id="iconPreview" class="icon-preview">
+                                <div class="default-preview">
+                                    <i class="fas fa-globe"></i>
+                                </div>
+                                <img id="iconPreviewImage" src="" alt="" style="display: none;">
+                            </div>
+                        </div>
+                        
+                        <!-- 图标操作按钮 -->
+                        <div class="icon-buttons">
+                            <button type="button" class="action-btn primary" id="fetchIconBtn">
+                                <i class="fas fa-sync-alt"></i> 自动获取图标
+                            </button>
+                            <button type="button" class="action-btn secondary" id="uploadIconBtn">
+                                <i class="fas fa-upload"></i> 上传图片
+                            </button>
+                        </div>
+                        
+                        <!-- 文件上传输入 (隐藏) -->
+                        <input type="file" id="iconUpload" accept="image/png, image/jpeg, image/svg+xml, image/gif, image/x-icon, image/vnd.microsoft.icon" style="display: none;">
+                        
+                        <!-- 状态提示 -->
+                        <div class="icon-loading" id="iconLoading" style="display: none; margin-top: 8px; text-align: center;">
+                            <i class="fas fa-spinner fa-spin"></i> 正在获取图标...
+                        </div>
+                        <div class="icon-error" id="iconError" style="display: none; margin-top: 8px; color: var(--danger-color); font-size: 14px;">
+                            无法获取图标，请尝试上传图片
+                        </div>
+                        <div class="icon-success" id="iconSuccess" style="display: none; margin-top: 8px; color: var(--success-color); font-size: 14px;">
+                            <i class="fas fa-check"></i> 图标获取成功
+                        </div>
+                        
+                        <!-- 上传文件信息 -->
+                        <div id="uploadInfo" style="display: none; margin-top: 8px; font-size: 14px; color: var(--text-tertiary);">
+                            <span id="uploadFileName"></span>
+                            <button type="button" id="removeUpload" style="margin-left: 8px; color: var(--danger-color); background: none; border: none; cursor: pointer;">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        
+                        <!-- 隐藏字段，用于存储最终图标数据 -->
+                        <input type="hidden" id="siteIconData" value="">
                     </div>
                     
                     <div class="form-group">
-                        <label for="siteColor" class="form-label">网站颜色</label>
+                        <label for="siteColor" class="form-label">图标背景颜色</label>
                         <input type="color" id="siteColor" class="form-input" value="#007AFF" style="height: 48px; padding: 8px;">
                     </div>
                     
@@ -1490,99 +1505,93 @@
         ];
         
         const defaultSites = {
-            // 常用网站
             1: [
-                { id: 1, name: 'GitHub', url: 'https://github.com', description: '代码托管平台', icon: 'fab fa-github', color: '#333333', isCustom: false },
-                { id: 2, name: 'Google', url: 'https://google.com', description: '搜索引擎', icon: 'fab fa-google', color: '#4285F4', isCustom: false },
-                { id: 3, name: 'Bilibili', url: 'https://bilibili.com', description: '视频社区', icon: 'fas fa-play-circle', color: '#FB7299', isCustom: false },
-                { id: 4, name: '知乎', url: 'https://zhihu.com', description: '问答社区', icon: 'fas fa-question-circle', color: '#0084FF', isCustom: false },
-                { id: 5, name: '豆瓣', url: 'https://douban.com', description: '书影音评论', icon: 'fas fa-book', color: '#2E963D', isCustom: false },
-                { id: 6, name: '微博', url: 'https://weibo.com', description: '社交媒体', icon: 'fas fa-comment', color: '#E6162D', isCustom: false }
+                { id: 1, name: 'GitHub', url: 'https://github.com', description: '代码托管平台', icon: 'https://github.githubassets.com/favicons/favicon.png', color: '#333333', isCustom: false },
+                { id: 2, name: 'Baidu', url: 'https://baidu.com', description: '百度搜索', icon: 'https://www.baidu.com/favicon.ico', color: '#2932E1', isCustom: false },
+                { id: 3, name: 'Bilibili', url: 'https://bilibili.com', description: '视频社区', icon: 'https://www.bilibili.com/favicon.ico', color: '#FB7299', isCustom: false },
+                { id: 4, name: '知乎', url: 'https://zhihu.com', description: '问答社区', icon: 'https://static.zhihu.com/heifetz/favicon.ico', color: '#0084FF', isCustom: false },
+                { id: 5, name: '豆瓣', url: 'https://douban.com', description: '书影音评论', icon: 'https://www.douban.com/favicon.ico', color: '#2E963D', isCustom: false },
+                { id: 6, name: '微博', url: 'https://weibo.com', description: '社交媒体', icon: 'https://weibo.com/favicon.ico', color: '#E6162D', isCustom: false }
             ],
             
-            // 实用工具
             2: [
-                { id: 7, name: 'Smallpdf', url: 'https://smallpdf.com', description: 'PDF编辑转换', icon: 'fas fa-file-pdf', color: '#D32F2F', isCustom: false },
-                { id: 8, name: 'Remove.bg', url: 'https://remove.bg', description: 'AI去背景', icon: 'fas fa-image', color: '#00A3FF', isCustom: false },
-                { id: 9, name: 'TinyPNG', url: 'https://tinypng.com', description: '图片压缩', icon: 'fas fa-compress-alt', color: '#80CBC4', isCustom: false },
-                { id: 10, name: 'ProcessOn', url: 'https://processon.com', description: '在线作图', icon: 'fas fa-project-diagram', color: '#3E64FF', isCustom: false },
-                { id: 11, name: 'JSON格式化', url: 'https://jsonformatter.org', description: 'JSON工具', icon: 'fas fa-code', color: '#F7DF1E', isCustom: false },
-                { id: 12, name: '二维码生成', url: 'https://cli.im', description: '二维码工具', icon: 'fas fa-qrcode', color: '#000000', isCustom: false }
+                { id: 7, name: 'Smallpdf', url: 'https://smallpdf.com', description: 'PDF编辑转换', icon: 'https://smallpdf.com/favicon.ico', color: '#D32F2F', isCustom: false },
+                { id: 8, name: 'ProcessOn', url: 'https://processon.com', description: '在线作图', icon: 'https://processon.com/favicon.ico', color: '#3E64FF', isCustom: false },
+                { id: 9, name: 'JSON格式化', url: 'https://jsonformatter.org', description: 'JSON工具', icon: 'https://jsonformatter.org/favicon.ico', color: '#F7DF1E', isCustom: false },
+                { id: 10, name: '二维码生成', url: 'https://cli.im', description: '二维码工具', icon: 'https://cli.im/favicon.ico', color: '#000000', isCustom: false },
+                { id: 11, name: '在线PS', url: 'https://ps.gaoding.com', description: '在线Photoshop', icon: 'https://ps.gaoding.com/favicon.ico', color: '#31A8FF', isCustom: false },
+                { id: 12, name: '腾讯文档', url: 'https://docs.qq.com', description: '在线文档', icon: 'https://docs.qq.com/favicon.ico', color: '#1C6DF2', isCustom: false }
             ],
             
-            // 软件驿站
             3: [
-                { id: 13, name: '腾讯软件中心', url: 'https://pc.qq.com', description: '官方软件下载', icon: 'fab fa-qq', color: '#1C6DF2', isCustom: false },
-                { id: 14, name: '微软官网', url: 'https://microsoft.com', description: '微软官方', icon: 'fab fa-microsoft', color: '#0078D7', isCustom: false },
-                { id: 15, name: 'Adobe官网', url: 'https://adobe.com', description: '创意软件', icon: 'fas fa-pen-nib', color: '#ED2224', isCustom: false },
-                { id: 16, name: '苹果官网', url: 'https://apple.com', description: '苹果官方', icon: 'fab fa-apple', color: '#000000', isCustom: false },
-                { id: 17, name: 'Steam', url: 'https://store.steampowered.com', description: '游戏平台', icon: 'fab fa-steam', color: '#171A21', isCustom: false },
-                { id: 18, name: 'Notion', url: 'https://notion.so', description: '笔记工具', icon: 'fas fa-sticky-note', color: '#000000', isCustom: false }
+                { id: 13, name: '腾讯软件中心', url: 'https://pc.qq.com', description: '官方软件下载', icon: 'https://pc.qq.com/favicon.ico', color: '#1C6DF2', isCustom: false },
+                { id: 14, name: '华为云', url: 'https://huaweicloud.com', description: '云服务', icon: 'https://www.huaweicloud.com/favicon.ico', color: '#FF0000', isCustom: false },
+                { id: 15, name: '阿里云', url: 'https://aliyun.com', description: '云服务', icon: 'https://www.aliyun.com/favicon.ico', color: '#FF6A00', isCustom: false },
+                { id: 16, name: '小米应用商店', url: 'https://app.mi.com', description: '应用下载', icon: 'https://app.mi.com/favicon.ico', color: '#FF6900', isCustom: false },
+                { id: 17, name: 'Steam', url: 'https://store.steampowered.com', description: '游戏平台', icon: 'https://store.steampowered.com/favicon.ico', color: '#171A21', isCustom: false },
+                { id: 18, name: 'WPS', url: 'https://www.wps.cn', description: '办公软件', icon: 'https://www.wps.cn/favicon.ico', color: '#00A3FF', isCustom: false }
             ],
             
-            // 游戏娱乐
             4: [
-                { id: 19, name: 'Steam', url: 'https://store.steampowered.com', description: '游戏平台', icon: 'fab fa-steam', color: '#171A21', isCustom: false },
-                { id: 20, name: 'Epic Games', url: 'https://epicgames.com', description: '游戏平台', icon: 'fas fa-gamepad', color: '#2A2A2A', isCustom: false },
-                { id: 21, name: 'NVIDIA GeForce', url: 'https://nvidia.com', description: '游戏优化', icon: 'fas fa-desktop', color: '#76B900', isCustom: false },
-                { id: 22, name: '斗鱼', url: 'https://douyu.com', description: '游戏直播', icon: 'fas fa-video', color: '#FE7A2E', isCustom: false },
-                { id: 23, name: '虎牙', url: 'https://huya.com', description: '游戏直播', icon: 'fas fa-broadcast-tower', color: '#FF6B00', isCustom: false },
-                { id: 24, name: 'TapTap', url: 'https://taptap.com', description: '手游社区', icon: 'fas fa-mobile-alt', color: '#FF2442', isCustom: false }
+                { id: 19, name: 'Steam', url: 'https://store.steampowered.com', description: '游戏平台', icon: 'https://store.steampowered.com/favicon.ico', color: '#171A21', isCustom: false },
+                { id: 20, name: '斗鱼', url: 'https://douyu.com', description: '游戏直播', icon: 'https://www.douyu.com/favicon.ico', color: '#FE7A2E', isCustom: false },
+                { id: 21, name: '虎牙', url: 'https://huya.com', description: '游戏直播', icon: 'https://www.huya.com/favicon.ico', color: '#FF6B00', isCustom: false },
+                { id: 22, name: 'TapTap', url: 'https://taptap.com', description: '手游社区', icon: 'https://www.taptap.com/favicon.ico', color: '#FF2442', isCustom: false },
+                { id: 23, name: '米哈游', url: 'https://mihoyo.com', description: '游戏开发', icon: 'https://www.mihoyo.com/favicon.ico', color: '#121212', isCustom: false },
+                { id: 24, name: 'NGA', url: 'https://nga.cn', description: '游戏论坛', icon: 'https://img.nga.178.com/favicon.ico', color: '#FF9900', isCustom: false }
             ],
             
-            // 影视音乐
             5: [
-                { id: 25, name: 'Netflix', url: 'https://netflix.com', description: '流媒体平台', icon: 'fas fa-film', color: '#E50914', isCustom: false },
-                { id: 26, name: 'YouTube', url: 'https://youtube.com', description: '视频分享', icon: 'fab fa-youtube', color: '#FF0000', isCustom: false },
-                { id: 27, name: '爱奇艺', url: 'https://iqiyi.com', description: '视频平台', icon: 'fas fa-play-circle', color: '#00BE06', isCustom: false },
-                { id: 28, name: '腾讯视频', url: 'https://v.qq.com', description: '视频平台', icon: 'fas fa-tv', color: '#1C6DF2', isCustom: false },
-                { id: 29, name: '网易云音乐', url: 'https://music.163.com', description: '音乐平台', icon: 'fas fa-music', color: '#C20C0C', isCustom: false },
-                { id: 30, name: 'Spotify', url: 'https://spotify.com', description: '音乐流媒体', icon: 'fab fa-spotify', color: '#1DB954', isCustom: false }
+                { id: 25, name: 'Bilibili', url: 'https://bilibili.com', description: '视频社区', icon: 'https://www.bilibili.com/favicon.ico', color: '#FB7299', isCustom: false },
+                { id: 26, name: '腾讯视频', url: 'https://v.qq.com', description: '视频平台', icon: 'https://v.qq.com/favicon.ico', color: '#1C6DF2', isCustom: false },
+                { id: 27, name: '爱奇艺', url: 'https://iqiyi.com', description: '视频平台', icon: 'https://www.iqiyi.com/favicon.ico', color: '#00BE06', isCustom: false },
+                { id: 28, name: '优酷', url: 'https://youku.com', description: '视频平台', icon: 'https://www.youku.com/favicon.ico', color: '#00B060', isCustom: false },
+                { id: 29, name: '网易云音乐', url: 'https://music.163.com', description: '音乐平台', icon: 'https://music.163.com/favicon.ico', color: '#C20C0C', isCustom: false },
+                { id: 30, name: 'QQ音乐', url: 'https://y.qq.com', description: '音乐平台', icon: 'https://y.qq.com/favicon.ico', color: '#31C27C', isCustom: false }
             ],
             
-            // 生活服务
             6: [
-                { id: 31, name: '淘宝', url: 'https://taobao.com', description: '购物平台', icon: 'fas fa-shopping-cart', color: '#FF4400', isCustom: false },
-                { id: 32, name: '京东', url: 'https://jd.com', description: '购物平台', icon: 'fas fa-shopping-bag', color: '#C91623', isCustom: false },
-                { id: 33, name: '美团', url: 'https://meituan.com', description: '生活服务', icon: 'fas fa-utensils', color: '#FFBD00', isCustom: false },
-                { id: 34, name: '饿了么', url: 'https://ele.me', description: '外卖服务', icon: 'fas fa-utensils', color: '#0088FF', isCustom: false },
-                { id: 35, name: '携程', url: 'https://ctrip.com', description: '旅行服务', icon: 'fas fa-plane', color: '#1BA9E8', isCustom: false },
-                { id: 36, name: '12306', url: 'https://12306.cn', description: '火车票预订', icon: 'fas fa-train', color: '#DE2A2A', isCustom: false }
+                { id: 31, name: '淘宝', url: 'https://taobao.com', description: '购物平台', icon: 'https://www.taobao.com/favicon.ico', color: '#FF4400', isCustom: false },
+                { id: 32, name: '京东', url: 'https://jd.com', description: '购物平台', icon: 'https://www.jd.com/favicon.ico', color: '#C91623', isCustom: false },
+                { id: 33, name: '美团', url: 'https://meituan.com', description: '生活服务', icon: 'https://www.meituan.com/favicon.ico', color: '#FFBD00', isCustom: false },
+                { id: 34, name: '饿了么', url: 'https://ele.me', description: '外卖服务', icon: 'https://www.ele.me/favicon.ico', color: '#0088FF', isCustom: false },
+                { id: 35, name: '携程', url: 'https://ctrip.com', description: '旅行服务', icon: 'https://www.ctrip.com/favicon.ico', color: '#1BA9E8', isCustom: false },
+                { id: 36, name: '12306', url: 'https://12306.cn', description: '火车票预订', icon: 'https://www.12306.cn/favicon.ico', color: '#DE2A2A', isCustom: false }
             ]
         };
         
-        // 默认快速访问网站
         const defaultFavoriteSites = [
-            { id: 1, name: 'GitHub', url: 'https://github.com', description: '代码托管', icon: 'fab fa-github', color: '#333333' },
-            { id: 2, name: 'Google', url: 'https://google.com', description: '搜索引擎', icon: 'fab fa-google', color: '#4285F4' },
-            { id: 26, name: 'YouTube', url: 'https://youtube.com', description: '视频平台', icon: 'fab fa-youtube', color: '#FF0000' },
-            { id: 3, name: 'Bilibili', url: 'https://bilibili.com', description: '视频社区', icon: 'fas fa-play-circle', color: '#FB7299' },
-            { id: 29, name: '网易云音乐', url: 'https://music.163.com', description: '音乐平台', icon: 'fas fa-music', color: '#C20C0C' },
-            { id: 31, name: '淘宝', url: 'https://taobao.com', description: '购物平台', icon: 'fas fa-shopping-cart', color: '#FF4400' }
+            { id: 1, name: 'GitHub', url: 'https://github.com', description: '代码托管', icon: 'https://github.githubassets.com/favicons/favicon.png', color: '#333333' },
+            { id: 2, name: 'Baidu', url: 'https://baidu.com', description: '百度搜索', icon: 'https://www.baidu.com/favicon.ico', color: '#2932E1' },
+            { id: 3, name: 'Bilibili', url: 'https://bilibili.com', description: '视频社区', icon: 'https://www.bilibili.com/favicon.ico', color: '#FB7299' },
+            { id: 29, name: '网易云音乐', url: 'https://music.163.com', description: '音乐平台', icon: 'https://music.163.com/favicon.ico', color: '#C20C0C' },
+            { id: 31, name: '淘宝', url: 'https://taobao.com', description: '购物平台', icon: 'https://www.taobao.com/favicon.ico', color: '#FF4400' },
+            { id: 33, name: '美团', url: 'https://meituan.com', description: '生活服务', icon: 'https://www.meituan.com/favicon.ico', color: '#FFBD00' }
         ];
         
-        // 从本地存储加载数据或使用默认数据
         let categories = JSON.parse(localStorage.getItem('categories')) || defaultCategories;
         let sites = JSON.parse(localStorage.getItem('sites')) || defaultSites;
         let favoriteSites = JSON.parse(localStorage.getItem('favoriteSites')) || defaultFavoriteSites;
         
-        // 保存数据到本地存储
         function saveData() {
             localStorage.setItem('categories', JSON.stringify(categories));
             localStorage.setItem('sites', JSON.stringify(sites));
             localStorage.setItem('favoriteSites', JSON.stringify(favoriteSites));
         }
         
-        // 生成唯一ID
         function generateId() {
             return Date.now() + Math.floor(Math.random() * 1000);
         }
         
         let currentCategoryId = null;
         let selectedSitesForQuickAccess = [];
-        let deleteType = null; // 'category', 'site', 'favorite'
-        let deleteTargetId = null; // 要删除的ID
-        let deleteCategoryId = null; // 要删除网站的分类ID
+        let deleteType = null;
+        let deleteTargetId = null;
+        let deleteCategoryId = null;
+        
+        // 图标相关变量
+        let uploadedImageData = null;
+        let currentIconSource = 'auto';
         
         // 初始化
         document.addEventListener('DOMContentLoaded', () => {
@@ -1591,7 +1600,8 @@
             setupEventListeners();
             loadCategoryOptions();
             setupNavbarScroll();
-            saveData(); // 确保默认数据被保存
+            initIconFunctionality();
+            saveData();
         });
         
         // 设置导航栏滚动效果
@@ -1604,6 +1614,360 @@
                     navbar.classList.remove('scrolled');
                 }
             });
+        }
+        
+        // 渲染网站图标
+        function renderSiteIcon(site, containerClass = 'site-icon') {
+            const iconData = site.icon;
+            
+            if (iconData && iconData.startsWith('data:image')) {
+                // 如果是Base64图片数据
+                return `<div class="${containerClass}" style="background-color: ${site.color}">
+                            <img src="${iconData}" alt="${site.name}图标">
+                        </div>`;
+            } else if (iconData && (iconData.startsWith('http') || iconData.startsWith('//'))) {
+                // 如果是URL
+                return `<div class="${containerClass}" style="background-color: ${site.color}">
+                            <img src="${iconData}" alt="${site.name}图标" onerror="this.onerror=null; this.src=''; this.parentElement.innerHTML='<div class=\"default-icon\"><i class=\"fas fa-globe\"></i></div>';">
+                        </div>`;
+            } else {
+                // 没有图标，使用默认图标
+                return `<div class="${containerClass}" style="background-color: ${site.color}">
+                            <div class="default-icon">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                        </div>`;
+            }
+        }
+        
+        // 获取网站的favicon - 优先使用国内可访问的服务
+        async function fetchWebsiteIcon(url) {
+            if (!url) return null;
+            
+            try {
+                // 确保URL有协议
+                let siteUrl = url.trim();
+                if (!siteUrl.startsWith('http://') && !siteUrl.startsWith('https://')) {
+                    siteUrl = 'https://' + siteUrl;
+                }
+                
+                // 解析域名
+                const urlObj = new URL(siteUrl);
+                const domain = urlObj.hostname;
+                
+                // 策略1: 优先使用国内可访问的favicon服务
+                const domesticServices = [
+                    // 必应favicon服务 (国内可访问)
+                    `https://bing.com/favicon/${domain}`,
+                    // 其他国内可能可访问的服务
+                    `https://favicon.cc/${domain}`,
+                    `https://getfavicon.org/${domain}`,
+                    // 使用网站自己的favicon
+                    `${urlObj.origin}/favicon.ico`,
+                    `${urlObj.origin}/favicon.png`,
+                    // 常用路径
+                    `${urlObj.origin}/apple-touch-icon.png`,
+                    `https://${domain}/favicon.ico`
+                ];
+                
+                // 尝试每个国内服务
+                for (const iconUrl of domesticServices) {
+                    try {
+                        const result = await testImageLoad(iconUrl);
+                        if (result) {
+                            return iconUrl;
+                        }
+                    } catch (error) {
+                        continue;
+                    }
+                }
+                
+                // 策略2: 尝试其他国际服务作为备选
+                const internationalServices = [
+                    `https://www.google.com/s2/favicons?domain=${domain}&sz=64`,
+                    `https://favicon.yandex.net/favicon/${domain}`
+                ];
+                
+                for (const iconUrl of internationalServices) {
+                    try {
+                        const result = await testImageLoad(iconUrl);
+                        if (result) {
+                            return iconUrl;
+                        }
+                    } catch (error) {
+                        continue;
+                    }
+                }
+                
+                return null;
+            } catch (error) {
+                console.error('获取图标失败:', error);
+                return null;
+            }
+        }
+        
+        // 测试图片是否可以加载
+        function testImageLoad(url) {
+            return new Promise((resolve) => {
+                // 设置超时
+                const timeout = setTimeout(() => {
+                    img.onload = null;
+                    img.onerror = null;
+                    resolve(null);
+                }, 3000);
+                
+                const img = new Image();
+                img.onload = () => {
+                    clearTimeout(timeout);
+                    // 检查图片是否有效（宽度和高度大于0）
+                    if (img.width > 0 && img.height > 0) {
+                        resolve(url);
+                    } else {
+                        resolve(null);
+                    }
+                };
+                img.onerror = () => {
+                    clearTimeout(timeout);
+                    resolve(null);
+                };
+                img.src = url;
+            });
+        }
+        
+        // 初始化图标功能
+        function initIconFunctionality() {
+            // 自动获取图标按钮
+            document.getElementById('fetchIconBtn')?.addEventListener('click', async () => {
+                const siteUrl = document.getElementById('siteUrl').value;
+                if (!siteUrl) {
+                    showToast('请输入网站地址', 'warning');
+                    return;
+                }
+                
+                // 显示加载状态
+                document.getElementById('iconLoading').style.display = 'block';
+                document.getElementById('iconError').style.display = 'none';
+                document.getElementById('iconSuccess').style.display = 'none';
+                document.getElementById('uploadInfo').style.display = 'none';
+                
+                try {
+                    const iconUrl = await fetchWebsiteIcon(siteUrl);
+                    
+                    if (iconUrl) {
+                        // 成功获取图标
+                        // 测试图标是否能正常加载
+                        const testResult = await testImageLoad(iconUrl);
+                        
+                        if (testResult) {
+                            // 更新预览
+                            const previewImage = document.getElementById('iconPreviewImage');
+                            const defaultPreview = document.getElementById('iconPreview').querySelector('.default-preview');
+                            
+                            previewImage.src = iconUrl;
+                            previewImage.style.display = 'block';
+                            defaultPreview.style.display = 'none';
+                            
+                            // 保存图标数据
+                            document.getElementById('siteIconData').value = iconUrl;
+                            currentIconSource = 'auto';
+                            uploadedImageData = null;
+                            
+                            document.getElementById('iconSuccess').style.display = 'block';
+                            document.getElementById('iconLoading').style.display = 'none';
+                            
+                            showToast('网站图标获取成功', 'success');
+                        } else {
+                            // 图标无法加载
+                            document.getElementById('iconError').style.display = 'block';
+                            document.getElementById('iconLoading').style.display = 'none';
+                            document.getElementById('siteIconData').value = '';
+                            showToast('获取的图标无法加载，请尝试上传图片', 'warning');
+                        }
+                    } else {
+                        // 获取失败
+                        document.getElementById('iconError').style.display = 'block';
+                        document.getElementById('iconLoading').style.display = 'none';
+                        document.getElementById('siteIconData').value = '';
+                        showToast('无法获取网站图标，请尝试上传图片', 'warning');
+                    }
+                } catch (error) {
+                    document.getElementById('iconError').style.display = 'block';
+                    document.getElementById('iconLoading').style.display = 'none';
+                    document.getElementById('siteIconData').value = '';
+                    showToast('获取图标时出错，请尝试上传图片', 'error');
+                }
+            });
+            
+            // 上传图标按钮
+            document.getElementById('uploadIconBtn')?.addEventListener('click', () => {
+                document.getElementById('iconUpload').click();
+            });
+            
+            // 处理文件上传
+            document.getElementById('iconUpload')?.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (!file) return;
+                
+                // 检查文件类型
+                const validTypes = ['image/png', 'image/jpeg', 'image/svg+xml', 'image/gif', 'image/x-icon', 'image/vnd.microsoft.icon'];
+                if (!validTypes.includes(file.type)) {
+                    showToast('请选择图片文件 (PNG, JPG, SVG, GIF, ICO)', 'error');
+                    return;
+                }
+                
+                // 检查文件大小 (限制为1MB)
+                if (file.size > 1 * 1024 * 1024) {
+                    showToast('图片大小不能超过1MB', 'error');
+                    return;
+                }
+                
+                // 读取文件为Base64
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    const fileUrl = event.target.result;
+                    
+                    // 更新预览
+                    const previewImage = document.getElementById('iconPreviewImage');
+                    const defaultPreview = document.getElementById('iconPreview').querySelector('.default-preview');
+                    
+                    previewImage.src = fileUrl;
+                    previewImage.style.display = 'block';
+                    defaultPreview.style.display = 'none';
+                    
+                    // 保存图标数据
+                    document.getElementById('siteIconData').value = fileUrl;
+                    currentIconSource = 'upload';
+                    uploadedImageData = fileUrl;
+                    
+                    // 显示文件信息
+                    document.getElementById('uploadFileName').textContent = file.name;
+                    document.getElementById('uploadInfo').style.display = 'block';
+                    
+                    // 隐藏其他状态
+                    document.getElementById('iconError').style.display = 'none';
+                    document.getElementById('iconSuccess').style.display = 'none';
+                    document.getElementById('iconLoading').style.display = 'none';
+                    
+                    showToast('图片上传成功', 'success');
+                };
+                
+                reader.readAsDataURL(file);
+            });
+            
+            // 移除上传的图片
+            document.getElementById('removeUpload')?.addEventListener('click', () => {
+                uploadedImageData = null;
+                document.getElementById('uploadInfo').style.display = 'none';
+                document.getElementById('iconUpload').value = '';
+                document.getElementById('siteIconData').value = '';
+                
+                // 重置预览
+                const previewImage = document.getElementById('iconPreviewImage');
+                const defaultPreview = document.getElementById('iconPreview').querySelector('.default-preview');
+                
+                previewImage.style.display = 'none';
+                defaultPreview.style.display = 'block';
+                
+                showToast('已移除上传的图片', 'info');
+            });
+            
+            // 网站URL输入变化时，尝试自动获取图标
+            document.getElementById('siteUrl')?.addEventListener('blur', function() {
+                const url = this.value.trim();
+                const siteName = document.getElementById('siteName').value;
+                
+                if (url) {
+                    // 如果网站名称为空，尝试从URL提取网站名称
+                    if (!siteName) {
+                        try {
+                            const urlObj = new URL(url.startsWith('http') ? url : 'https://' + url);
+                            const domain = urlObj.hostname.replace('www.', '');
+                            const siteNameParts = domain.split('.');
+                            if (siteNameParts.length > 1) {
+                                const name = siteNameParts[0].charAt(0).toUpperCase() + siteNameParts[0].slice(1);
+                                document.getElementById('siteName').value = name;
+                            }
+                        } catch (e) {
+                            // 忽略URL解析错误
+                        }
+                    }
+                    
+                    // 如果还没有图标，自动触发获取图标
+                    if (!document.getElementById('siteIconData').value) {
+                        setTimeout(() => {
+                            document.getElementById('fetchIconBtn')?.click();
+                        }, 500);
+                    }
+                }
+            });
+            
+            // 网站颜色变化时更新预览背景
+            document.getElementById('siteColor')?.addEventListener('input', function() {
+                const color = this.value;
+                const iconPreview = document.getElementById('iconPreview');
+                if (iconPreview) {
+                    iconPreview.style.backgroundColor = color;
+                }
+            });
+        }
+        
+        // 添加新网站
+        function addNewSite(siteData) {
+            const categoryId = parseInt(siteData.category);
+            
+            // 确保该分类存在
+            if (!sites[categoryId]) {
+                sites[categoryId] = [];
+            }
+            
+            // 获取图标数据
+            const iconData = siteData.icon || '';
+            
+            // 创建新网站对象
+            const newSite = {
+                id: generateId(),
+                name: siteData.name,
+                url: siteData.url,
+                description: siteData.description,
+                icon: iconData,
+                color: siteData.color,
+                isCustom: true
+            };
+            
+            // 添加到分类
+            sites[categoryId].push(newSite);
+            
+            // 保存数据
+            saveData();
+            
+            // 重新加载
+            if (currentCategoryId === categoryId) {
+                loadSites(categoryId);
+            }
+            loadCategories();
+            
+            // 关闭模态框
+            document.getElementById('addSiteModal').classList.remove('active');
+            
+            // 显示成功消息
+            showToast('网站添加成功', 'success');
+            
+            // 重置表单
+            document.getElementById('addSiteForm').reset();
+            document.getElementById('siteColor').value = '#007AFF';
+            
+            // 重置图标相关状态
+            document.getElementById('iconPreviewImage').style.display = 'none';
+            document.getElementById('iconPreview').querySelector('.default-preview').style.display = 'block';
+            document.getElementById('iconPreview').style.backgroundColor = '';
+            document.getElementById('iconError').style.display = 'none';
+            document.getElementById('iconSuccess').style.display = 'none';
+            document.getElementById('iconLoading').style.display = 'none';
+            document.getElementById('uploadInfo').style.display = 'none';
+            document.getElementById('iconUpload').value = '';
+            document.getElementById('siteIconData').value = '';
+            uploadedImageData = null;
+            currentIconSource = 'auto';
         }
         
         // 加载快速访问
@@ -1631,13 +1995,13 @@
                 quickCard.target = '_blank';
                 quickCard.dataset.id = site.id;
                 
+                const iconHtml = renderSiteIcon(site, 'quick-icon');
+                
                 quickCard.innerHTML = `
                     <button class="quick-delete-btn" data-site-id="${site.id}" title="从快速访问中删除">
                         <i class="fas fa-times"></i>
                     </button>
-                    <div class="quick-icon" style="background-color: ${site.color}">
-                        <i class="${site.icon}"></i>
-                    </div>
+                    ${iconHtml}
                     <div class="quick-content">
                         <div class="quick-title">${site.name}</div>
                         <div class="quick-desc">${site.description}</div>
@@ -1676,7 +2040,7 @@
                     tagsHtml += `<span class="category-tag">${tag}</span>`;
                 });
                 
-                // 操作按钮（自定义分类和默认分类都显示删除按钮，但默认分类点击时会有不同提示）
+                // 操作按钮
                 let actionsHtml = `
                     <div class="category-actions">
                         <button class="category-action-btn delete" data-category-id="${category.id}" data-custom="${category.isCustom}" title="删除分类">
@@ -1715,10 +2079,9 @@
                 });
             });
             
-            // 为分类卡片添加点击事件（查看网站列表）
+            // 为分类卡片添加点击事件
             document.querySelectorAll('.category-card').forEach(card => {
                 card.addEventListener('click', (e) => {
-                    // 如果点击的是删除按钮，则不触发查看网站列表
                     if (!e.target.closest('.category-action-btn')) {
                         const categoryId = parseInt(card.dataset.id);
                         loadSites(categoryId);
@@ -1761,15 +2124,16 @@
                     // 检查是否已在快速访问中
                     const isInQuickAccess = favoriteSites.some(fav => fav.id === site.id);
                     
+                    // 渲染图标
+                    const iconHtml = renderSiteIcon(site);
+                    
                     // 创建网站卡片HTML
                     siteCard.innerHTML = `
                         <a href="${site.url}" target="_blank" class="site-card" data-id="${site.id}">
                             <button class="site-delete-btn" data-site-id="${site.id}" data-category-id="${categoryId}" title="删除网站">
                                 <i class="fas fa-times"></i>
                             </button>
-                            <div class="site-icon" style="background-color: ${site.color}">
-                                <i class="${site.icon}"></i>
-                            </div>
+                            ${iconHtml}
                             <div class="site-info">
                                 <div class="site-name">${site.name}</div>
                                 <div class="site-desc">${site.description}</div>
@@ -1919,14 +2283,15 @@
                     // 检查是否已在快速访问中
                     const isInQuickAccess = favoriteSites.some(fav => fav.id === site.id);
                     
+                    // 渲染图标
+                    const iconHtml = renderSiteIcon(site);
+                    
                     siteCard.innerHTML = `
                         <a href="${site.url}" target="_blank" class="site-card" data-id="${site.id}">
                             <button class="site-delete-btn" data-site-id="${site.id}" data-category-id="${site.categoryId}" title="删除网站">
                                 <i class="fas fa-times"></i>
                             </button>
-                            <div class="site-icon" style="background-color: ${site.color}">
-                                <i class="${site.icon}"></i>
-                            </div>
+                            ${iconHtml}
                             <div class="site-info">
                                 <div class="site-name">${site.name}</div>
                                 <div class="site-desc">${site.description} · ${site.categoryName}</div>
@@ -1984,49 +2349,6 @@
                 option.textContent = category.name;
                 categorySelect.appendChild(option);
             });
-        }
-        
-        // 添加新网站
-        function addNewSite(siteData) {
-            const categoryId = parseInt(siteData.category);
-            
-            // 确保该分类存在
-            if (!sites[categoryId]) {
-                sites[categoryId] = [];
-            }
-            
-            // 创建新网站对象
-            const newSite = {
-                id: generateId(),
-                name: siteData.name,
-                url: siteData.url,
-                description: siteData.description,
-                icon: siteData.icon,
-                color: siteData.color,
-                isCustom: true
-            };
-            
-            // 添加到分类
-            sites[categoryId].push(newSite);
-            
-            // 保存数据
-            saveData();
-            
-            // 重新加载
-            if (currentCategoryId === categoryId) {
-                loadSites(categoryId);
-            }
-            loadCategories();
-            
-            // 关闭模态框
-            document.getElementById('addSiteModal').classList.remove('active');
-            
-            // 显示成功消息
-            showToast('网站添加成功', 'success');
-            
-            // 重置表单
-            document.getElementById('addSiteForm').reset();
-            document.getElementById('siteColor').value = '#007AFF';
         }
         
         // 添加新分类
@@ -2171,7 +2493,6 @@
             
             // 检查是否为默认分类
             if (!isCustom) {
-                // 对于默认分类，询问用户是否要删除所有网站但保留分类
                 document.getElementById('confirmDeleteMessage').innerHTML = `
                     <p>确定要删除分类 <strong>"${categoryInfo.name}"</strong> 中的所有网站吗？</p>
                     <p style="margin-top: 12px; color: var(--text-tertiary);">
@@ -2180,11 +2501,9 @@
                     </p>
                 `;
                 
-                // 设置删除参数
                 deleteType = 'defaultCategorySites';
                 deleteTargetId = categoryId;
                 
-                // 显示确认模态框
                 document.getElementById('confirmDeleteModal').classList.add('active');
                 return;
             }
@@ -2192,7 +2511,6 @@
             // 获取分类中的网站数量
             const siteCount = sites[categoryId] ? sites[categoryId].length : 0;
             
-            // 设置删除确认消息
             document.getElementById('confirmDeleteMessage').innerHTML = `
                 <p>确定要删除分类 <strong>"${categoryInfo.name}"</strong> 吗？</p>
                 <p style="margin-top: 12px; color: var(--text-tertiary);">
@@ -2201,68 +2519,54 @@
                 </p>
             `;
             
-            // 设置删除参数
             deleteType = 'category';
             deleteTargetId = categoryId;
             
-            // 显示确认模态框
             document.getElementById('confirmDeleteModal').classList.add('active');
         }
         
         // 删除默认分类中的所有网站
         function deleteDefaultCategorySites(categoryId) {
-            // 获取该分类下的所有网站ID
             const siteIdsToRemove = sites[categoryId] ? sites[categoryId].map(site => site.id) : [];
             
-            // 从快速访问中移除这些网站
             favoriteSites = favoriteSites.filter(site => !siteIdsToRemove.includes(site.id));
             
-            // 清空该分类的网站数据
             sites[categoryId] = [];
             
-            // 保存数据
             saveData();
             
-            // 重新加载
             if (currentCategoryId === categoryId) {
                 loadSites(categoryId);
             }
             loadCategories();
             loadQuickAccess();
             
-            // 关闭确认模态框
             document.getElementById('confirmDeleteModal').classList.remove('active');
             
-            // 显示成功消息
             showToast('已删除分类中的所有网站', 'success');
         }
         
         // 显示删除快速访问网站确认模态框
         function showDeleteQuickAccessConfirmation(siteId) {
-            // 查找网站信息
             const siteInfo = favoriteSites.find(site => site.id === siteId);
             if (!siteInfo) return;
             
-            // 设置删除确认消息
             document.getElementById('confirmDeleteMessage').innerHTML = `
                 <p>确定要从快速访问中移除网站 <strong>"${siteInfo.name}"</strong> 吗？</p>
                 <p style="margin-top: 12px; color: var(--text-tertiary);">此操作不会从分类中删除该网站，只是从快速访问中移除。</p>
             `;
             
-            // 设置删除参数
             deleteType = 'favorite';
             deleteTargetId = siteId;
             
-            // 显示确认模态框
             document.getElementById('confirmDeleteModal').classList.add('active');
         }
         
-        // 显示选择网站模态框（用于添加到快速访问）
+        // 显示选择网站模态框
         function showSelectSiteModal() {
             const selectSitesList = document.getElementById('selectSitesList');
             selectSitesList.innerHTML = '';
             
-            // 收集所有网站
             let allSites = [];
             Object.entries(sites).forEach(([categoryId, categorySites]) => {
                 const category = categories.find(cat => cat.id === parseInt(categoryId));
@@ -2272,7 +2576,6 @@
                 });
             });
             
-            // 过滤掉已在快速访问中的网站
             const availableSites = allSites.filter(site => 
                 !favoriteSites.some(fav => fav.id === site.id)
             );
@@ -2293,13 +2596,13 @@
                     selectSiteItem.className = 'select-site-item';
                     selectSiteItem.dataset.id = site.id;
                     
+                    const iconHtml = renderSiteIcon(site);
+                    
                     selectSiteItem.innerHTML = `
                         <div class="select-site-check">
                             <i class="fas fa-check"></i>
                         </div>
-                        <div class="site-icon" style="background-color: ${site.color}">
-                            <i class="${site.icon}"></i>
-                        </div>
+                        ${iconHtml}
                         <div class="site-info">
                             <div class="site-name">${site.name}</div>
                             <div class="site-desc">${site.description} · ${site.categoryName}</div>
@@ -2308,7 +2611,6 @@
                     
                     selectSitesList.appendChild(selectSiteItem);
                     
-                    // 选择/取消选择网站
                     selectSiteItem.addEventListener('click', () => {
                         selectSiteItem.classList.toggle('selected');
                         
@@ -2324,7 +2626,6 @@
                 });
             }
             
-            // 显示模态框
             document.getElementById('selectSiteModal').classList.add('active');
         }
         
@@ -2338,7 +2639,6 @@
             let addedCount = 0;
             
             selectedSitesForQuickAccess.forEach(siteId => {
-                // 在所有分类中查找网站
                 let foundSite = null;
                 Object.values(sites).forEach(categorySites => {
                     const site = categorySites.find(s => s.id === siteId);
@@ -2351,19 +2651,14 @@
                 }
             });
             
-            // 保存数据
             saveData();
             
-            // 重新加载快速访问
             loadQuickAccess();
             
-            // 关闭模态框
             document.getElementById('selectSiteModal').classList.remove('active');
             
-            // 重置选择
             selectedSitesForQuickAccess = [];
             
-            // 显示成功消息
             showToast(`已添加 ${addedCount} 个网站到快速访问`, 'success');
         }
         
@@ -2374,14 +2669,11 @@
             const toastMessage = document.getElementById('toastMessage');
             const toastIcon = toast.querySelector('.toast-icon i');
             
-            // 设置消息内容
             toastMessage.textContent = message;
             
-            // 设置样式和图标
             toast.className = 'toast';
             toast.classList.add(`toast-${type}`);
             
-            // 设置图标
             switch(type) {
                 case 'success':
                     toastTitle.textContent = '操作成功';
@@ -2402,10 +2694,8 @@
                     break;
             }
             
-            // 显示提示
             toast.classList.add('show');
             
-            // 3秒后自动隐藏
             setTimeout(() => {
                 toast.classList.remove('show');
             }, 3000);
@@ -2446,7 +2736,6 @@
                     try {
                         const importedData = JSON.parse(event.target.result);
                         
-                        // 验证数据格式
                         if (importedData.categories && importedData.sites && importedData.favoriteSites) {
                             if (confirm('导入数据将覆盖当前数据，确定要导入吗？')) {
                                 categories = importedData.categories;
@@ -2455,7 +2744,6 @@
                                 
                                 saveData();
                                 
-                                // 重新加载页面
                                 loadQuickAccess();
                                 loadCategories();
                                 loadCategoryOptions();
@@ -2494,7 +2782,6 @@
                 document.getElementById('sitesModal').classList.remove('active');
             });
             
-            // 点击模态框外部关闭
             document.getElementById('sitesModal').addEventListener('click', (e) => {
                 if (e.target === document.getElementById('sitesModal')) {
                     document.getElementById('sitesModal').classList.remove('active');
@@ -2504,6 +2791,13 @@
             // 添加网站按钮
             document.getElementById('addSiteBtn').addEventListener('click', () => {
                 document.getElementById('addSiteModal').classList.add('active');
+                document.getElementById('iconPreviewImage').style.display = 'none';
+                document.getElementById('iconPreview').querySelector('.default-preview').style.display = 'block';
+                document.getElementById('iconError').style.display = 'none';
+                document.getElementById('iconSuccess').style.display = 'none';
+                document.getElementById('iconLoading').style.display = 'none';
+                document.getElementById('uploadInfo').style.display = 'none';
+                document.getElementById('siteIconData').value = '';
             });
             
             // 添加快捷方式按钮
@@ -2511,7 +2805,6 @@
                 showSelectSiteModal();
             });
             
-            // 导航栏添加快捷按钮
             document.getElementById('addQuickAccessBtn').addEventListener('click', () => {
                 showSelectSiteModal();
             });
@@ -2524,9 +2817,9 @@
                     name: document.getElementById('siteName').value,
                     url: document.getElementById('siteUrl').value,
                     description: document.getElementById('siteDescription').value,
-                    icon: document.getElementById('siteIcon').value,
                     color: document.getElementById('siteColor').value,
-                    category: document.getElementById('siteCategory').value
+                    category: document.getElementById('siteCategory').value,
+                    icon: document.getElementById('siteIconData').value
                 };
                 
                 addNewSite(siteData);
@@ -2580,7 +2873,6 @@
                 selectedSitesForQuickAccess = [];
             });
             
-            // 点击选择网站模态框外部关闭
             document.getElementById('selectSiteModal').addEventListener('click', (e) => {
                 if (e.target === document.getElementById('selectSiteModal')) {
                     document.getElementById('selectSiteModal').classList.remove('active');
@@ -2623,17 +2915,14 @@
             document.getElementById('manageDataBtn').addEventListener('click', (e) => {
                 e.preventDefault();
                 if (confirm('确定要重置所有数据吗？这将恢复默认设置并清除所有自定义网站和分类。')) {
-                    // 清除本地存储
                     localStorage.removeItem('categories');
                     localStorage.removeItem('sites');
                     localStorage.removeItem('favoriteSites');
                     
-                    // 重置数据
                     categories = defaultCategories;
                     sites = defaultSites;
                     favoriteSites = defaultFavoriteSites;
                     
-                    // 重新加载
                     loadQuickAccess();
                     loadCategories();
                     loadCategoryOptions();
@@ -2645,7 +2934,7 @@
             // 关于按钮
             document.getElementById('aboutBtn').addEventListener('click', (e) => {
                 e.preventDefault();
-                alert('JASPER的个人导航 v2.3\n\n完全自定义的导航系统\n\n功能特色：\n- 添加自定义分类\n- 删除自定义分类\n- 删除默认分类中的所有网站\n- 删除网站\n- 快速访问网站删除\n- 完全自由管理\n\n© 2026 JASPER的个人导航');
+                alert('JASPER的个人导航 v2.6\n\n功能特色：\n- 优先使用国内服务自动获取网站图标\n- 支持手动上传本地图片作为图标\n- 完全自定义分类和网站管理\n- 快速访问功能\n- 数据本地存储，支持导入导出\n\n© 2026 JASPER的个人导航');
             });
             
             // 导出数据按钮
