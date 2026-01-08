@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="zh-CN">
  <head>
@@ -717,7 +718,17 @@
         
         @keyframes card-appear {
             from { opacity: 0; transform: translateY(20px) scale(0.95); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
+            
+
+        /* 分类网站列表：打开分类时仅使用模态弹出动画，避免大量卡片入场动画导致卡顿 */
+        #sitesModal .site-card,
+        #sitesModal .site-card-container {
+            animation: none !important;
+        }
+        #sitesModal .modal-content {
+            will-change: transform, opacity;
+        }
+to { opacity: 1; transform: translateY(0) scale(1); }
         }
         
         .quick-card:hover {
@@ -3952,7 +3963,226 @@ body.dark-mode select{
 @media (prefers-reduced-motion: reduce){
   *{ animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
 }
-  </style>
+  
+        /* =========================
+           倒计时 / 计时（内置工具）
+           ========================= */
+        .cd-modal-content { max-width: 860px; }
+        .cd-wrap { display: grid; gap: 14px; }
+        .cd-mode {
+            position: relative;
+            display: flex;
+            gap: 6px;
+            padding: 6px;
+            border-radius: 16px;
+            background: var(--glass2);
+            border: 1px solid var(--stroke);
+            backdrop-filter: blur(var(--blur-md));
+            -webkit-backdrop-filter: blur(var(--blur-md));
+            overflow: hidden;
+        }
+        .cd-mode-btn {
+            position: relative;
+            flex: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 10px 12px;
+            border-radius: 12px;
+            border: 0;
+            background: transparent;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: color .2s var(--apple-ease), transform .2s var(--apple-ease);
+            z-index: 2;
+            font-weight: 650;
+            letter-spacing: .2px;
+            user-select: none;
+        }
+        .cd-mode-btn i { opacity: .9; }
+        .cd-mode-btn span { white-space: nowrap; }
+        .cd-mode-btn:hover { color: var(--text-primary); transform: translateY(-1px); }
+        .cd-mode-btn.active { color: var(--text-primary); }
+
+        .cd-indicator {
+            position: absolute;
+            top: 6px;
+            bottom: 6px;
+            left: 6px;
+            width: calc(50% - 9px);
+            border-radius: 12px;
+            background: rgba(255,255,255,.12);
+            border: 1px solid var(--stroke2);
+            box-shadow: var(--shadow-sm);
+            backdrop-filter: blur(var(--blur-md));
+            -webkit-backdrop-filter: blur(var(--blur-md));
+            transition: transform .28s var(--apple-ease), width .28s var(--apple-ease);
+            z-index: 1;
+        }
+        body.theme-dark .cd-indicator { background: rgba(0,0,0,.22); }
+
+        .cd-forms { display: grid; gap: 10px; }
+        .cd-form { display: none; }
+        .cd-form.active { display: block; }
+
+        .cd-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 12px;
+        }
+        @media (max-width: 720px) {
+            .cd-grid { grid-template-columns: 1fr; }
+        }
+
+        .cd-field { display: grid; gap: 6px; }
+        .cd-field span {
+            font-size: 12px;
+            color: var(--text-secondary);
+            letter-spacing: .2px;
+        }
+        .cd-field input {
+            width: 100%;
+            padding: 12px 12px;
+            border-radius: 14px;
+            border: 1px solid var(--stroke);
+            background: rgba(255,255,255,.12);
+            color: var(--text-primary);
+            outline: none;
+            transition: border-color .2s var(--apple-ease), box-shadow .2s var(--apple-ease), transform .2s var(--apple-ease);
+        }
+        body.theme-dark .cd-field input { background: rgba(0,0,0,.22); }
+        .cd-field input:focus {
+            border-color: rgba(0,122,255,.55);
+            box-shadow: 0 0 0 3px rgba(0,122,255,.18);
+            transform: translateY(-1px);
+        }
+
+        .cd-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+        .cd-actions .nav-btn { flex: 1; min-width: 140px; justify-content: center; }
+
+        .cd-display {
+            display: none;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--stroke);
+            background: var(--glass);
+            backdrop-filter: blur(var(--blur-lg));
+            -webkit-backdrop-filter: blur(var(--blur-lg));
+            box-shadow: var(--shadow);
+            padding: 16px;
+        }
+        .cd-display.visible { display: block; }
+
+        .cd-display-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+        .cd-title { font-size: 16px; font-weight: 800; letter-spacing: .2px; }
+
+        .cd-timer {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+        @media (max-width: 520px) {
+            .cd-timer { grid-template-columns: repeat(2, 1fr); }
+        }
+        .cd-timer-block {
+            border-radius: 16px;
+            padding: 12px 10px;
+            border: 1px solid var(--stroke);
+            background: rgba(255,255,255,.10);
+            backdrop-filter: blur(var(--blur-md));
+            -webkit-backdrop-filter: blur(var(--blur-md));
+            text-align: center;
+        }
+        body.theme-dark .cd-timer-block { background: rgba(0,0,0,.20); }
+        .cd-timer-value {
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            line-height: 1.05;
+            transition: transform .22s var(--apple-ease), filter .22s var(--apple-ease);
+        }
+        .cd-timer-value.updating { transform: translateY(-2px) scale(1.03); filter: saturate(1.1); }
+        .cd-timer-label { margin-top: 6px; font-size: 12px; color: var(--text-secondary); }
+
+        .cd-info {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 12px;
+        }
+        @media (max-width: 720px) {
+            .cd-info { grid-template-columns: 1fr; }
+        }
+        .cd-info-card{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
+            border-radius: 16px;
+            border: 1px solid var(--stroke);
+            background: rgba(255,255,255,.10);
+            backdrop-filter: blur(var(--blur-md));
+            -webkit-backdrop-filter: blur(var(--blur-md));
+        }
+        body.theme-dark .cd-info-card{ background: rgba(0,0,0,.20); }
+        .cd-info-icon{
+            width: 36px; height: 36px;
+            border-radius: 12px;
+            display: grid; place-items: center;
+            background: rgba(0,122,255,.15);
+            border: 1px solid rgba(0,122,255,.22);
+            flex: 0 0 auto;
+        }
+        body.theme-dark .cd-info-icon{ background: rgba(0,122,255,.18); border-color: rgba(0,122,255,.26); }
+        .cd-info-content small{ display:block; font-size: 11px; color: var(--text-secondary); }
+        .cd-info-content span{ display:block; font-weight: 800; margin-top: 2px; }
+
+        .cd-progress { margin-top: 12px; }
+        .cd-progress-head{
+            display:flex; justify-content: space-between; align-items:center;
+            color: var(--text-secondary);
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+        .cd-progress-track{
+            height: 12px;
+            border-radius: 999px;
+            border: 1px solid var(--stroke);
+            background: rgba(255,255,255,.10);
+            overflow: hidden;
+        }
+        body.theme-dark .cd-progress-track{ background: rgba(0,0,0,.18); }
+        .cd-progress-bar{
+            height: 100%;
+            width: 0%;
+            border-radius: 999px;
+            background: linear-gradient(90deg, rgba(0,122,255,.88), rgba(88,86,214,.88));
+            transition: width .25s var(--apple-ease);
+        }
+
+        .cd-status { margin-top: 12px; display:flex; justify-content:flex-start; }
+        .cd-status-badge{
+            display:inline-flex; align-items:center; gap: 10px;
+            padding: 10px 12px;
+            border-radius: 999px;
+            border: 1px solid var(--stroke);
+            background: rgba(255,255,255,.10);
+            color: var(--text-primary);
+            backdrop-filter: blur(var(--blur-md));
+            -webkit-backdrop-filter: blur(var(--blur-md));
+            font-weight: 750;
+        }
+        body.theme-dark .cd-status-badge{ background: rgba(0,0,0,.18); }
+
+        .cd-status-badge.calm { box-shadow: 0 10px 22px rgba(34,197,94,.10); }
+        .cd-status-badge.week { box-shadow: 0 10px 22px rgba(59,130,246,.10); }
+        .cd-status-badge.few-days { box-shadow: 0 10px 22px rgba(245,158,11,.10); }
+        .cd-status-badge.last-day { box-shadow: 0 10px 22px rgba(239,68,68,.14); }
+        .cd-status-badge.final-sprint { box-shadow: 0 10px 22px rgba(236,72,153,.18); }
+        .cd-status-badge.success { box-shadow: 0 10px 22px rgba(34,197,94,.18); }
+
+</style>
  </head>
  <body>
   <canvas id="fx">
@@ -4036,6 +4266,10 @@ body.dark-mode select{
      <button class="nav-btn tooltip" id="commandPaletteBtn" title="快捷指令（Ctrl/⌘ + K）">
       <i class="fas fa-bolt">
       </i>
+     </button>
+
+     <button class="nav-btn tooltip" id="countdownBtn" title="倒计时 / 计时">
+      <i class="fas fa-hourglass-half"></i>
      </button>
      <button class="nav-btn tooltip" id="themeToggle" title="切换明暗主题">
       <i class="fas fa-moon">
@@ -4973,6 +5207,7 @@ function generateId() {
             loadRecent();
             loadCategories();
             setupEventListeners();
+            setupCountdownFeature();
             loadCategoryOptions();
             setupNavbarScroll();
             setupAutoHideScrollbars();
@@ -6542,14 +6777,11 @@ function setupReorderControls() {
                     </div>
                 `;
             } else {
-                // 添加动画延迟
-                categorySites.forEach((site, index) => {
-                    setTimeout(() => {
+                // 直接渲染（去除逐项延迟/入场动画，避免打开分类时卡顿）
+                const frag = document.createDocumentFragment();
+                categorySites.forEach((site) => {
                         const siteCard = document.createElement('div');
-                        siteCard.className = 'site-card-container';
-                        siteCard.style.animationDelay = `${index * 0.03}s`;
-                        
-                        // 检查是否已在快速访问中
+                        siteCard.className = 'site-card-container';                        // 检查是否已在快速访问中
                         const isInQuickAccess = favoriteSites.some(fav => (String(fav.id) === String(site.id)) || (urlKey(fav.url) && urlKey(fav.url) === urlKey(site.url)));
                         
                         // 渲染图标
@@ -6575,7 +6807,7 @@ function setupReorderControls() {
                             </a>
                         `;
                         
-                        sitesList.appendChild(siteCard);
+                        frag.appendChild(siteCard);
                         
                         // 设置添加到快速访问按钮事件
                         const actionBtn = siteCard.querySelector('.action-btn');
@@ -6599,9 +6831,10 @@ function setupReorderControls() {
                             const catId = parseInt(deleteBtn.dataset.categoryId);
                             showDeleteSiteConfirmation(siteId, catId);
                         });
-                    }, index * 30);
+                    
                 });
-            }
+                sitesList.appendChild(frag);
+}
             
             // 显示模态框
             document.getElementById('sitesModal').classList.add('active');
@@ -7904,6 +8137,552 @@ function setupScrollReveal() {
       };
     });
   });
-  </script>
- </body>
+  
+/* =========================
+   倒计时 / 计时（内置工具）
+   ========================= */
+function setupCountdownFeature() {
+    const btn = document.getElementById('countdownBtn');
+    const modal = document.getElementById('countdownModal');
+    const closeBtn = document.getElementById('closeCountdownModal');
+
+    if (!btn || !modal || !closeBtn) return;
+    if (modal.dataset.cdInit) return;
+    modal.dataset.cdInit = '1';
+
+    const STORAGE_KEY = 'jas_nav_countdown_v1';
+    let countdownTimer = null;
+    let startDateTime = null;
+    let targetDateTime = null;
+
+    const modeBtns = Array.from(modal.querySelectorAll('.cd-mode-btn'));
+    const indicator = modal.querySelector('.cd-indicator');
+    const dateForm = document.getElementById('cdDateForm');
+    const daysForm = document.getElementById('cdDaysForm');
+
+    const el = (id) => document.getElementById(id);
+
+    function toast(msg, type) {
+        if (typeof showToast === 'function') {
+            showToast(msg, type || 'info');
+        } else {
+            alert(msg);
+        }
+    }
+
+    function openCountdownModal() {
+        modal.classList.add('active');
+        modal.setAttribute('aria-hidden', 'false');
+        if (typeof syncModalState === 'function') syncModalState();
+        // Ensure indicator is positioned correctly
+        requestAnimationFrame(() => {
+            const activeBtn = modal.querySelector('.cd-mode-btn.active') || modeBtns[0];
+            updateIndicator(activeBtn);
+        });
+        // Focus first input for faster use
+        const activePanel = modal.querySelector('.cd-form.active');
+        const firstInput = activePanel ? activePanel.querySelector('input') : null;
+        if (firstInput) setTimeout(() => firstInput.focus(), 80);
+    }
+
+    function closeCountdownModal() {
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
+        if (typeof syncModalState === 'function') syncModalState();
+    }
+
+    // Open / Close handlers
+    btn.addEventListener('click', openCountdownModal);
+    closeBtn.addEventListener('click', closeCountdownModal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeCountdownModal();
+    });
+
+    // Mode switch
+    function updateIndicator(activeBtn) {
+        if (!indicator || !activeBtn) return;
+        const parentRect = activeBtn.parentElement.getBoundingClientRect();
+        const rect = activeBtn.getBoundingClientRect();
+        const left = rect.left - parentRect.left;
+        indicator.style.width = rect.width + 'px';
+        indicator.style.transform = `translateX(${left}px)`;
+    }
+
+    function setMode(mode) {
+        modeBtns.forEach(b => {
+            const on = b.dataset.mode === mode;
+            b.classList.toggle('active', on);
+            b.setAttribute('aria-selected', on ? 'true' : 'false');
+        });
+        if (mode === 'date') {
+            dateForm.classList.add('active');
+            daysForm.classList.remove('active');
+        } else {
+            daysForm.classList.add('active');
+            dateForm.classList.remove('active');
+        }
+        const activeBtn = modeBtns.find(b => b.dataset.mode === mode) || modeBtns[0];
+        setTimeout(() => updateIndicator(activeBtn), 20);
+        saveCountdownData();
+    }
+
+    modeBtns.forEach(btn => {
+        btn.addEventListener('click', () => setMode(btn.dataset.mode));
+    });
+
+    // Helpers
+    function formatDateShort(date) {
+        try {
+            return date.toLocaleDateString('zh-CN', { month: 'short', day: 'numeric' });
+        } catch {
+            return date.toISOString().split('T')[0];
+        }
+    }
+
+    function updateTimerValue(id, value) {
+        const node = el(id);
+        if (!node) return;
+        const newVal = String(value).padStart(2, '0');
+        if (node.textContent !== newVal) {
+            node.textContent = newVal;
+            node.classList.add('updating');
+            setTimeout(() => node.classList.remove('updating'), 400);
+        }
+    }
+
+    // Storage
+    function saveCountdownData() {
+        const activeMode = (modal.querySelector('.cd-mode-btn.active')?.dataset.mode) || 'date';
+        const saveData = {
+            mode: activeMode,
+            eventName: (activeMode === 'date' ? el('cd_eventNameDate').value : el('cd_eventNameDays').value) || '',
+            startTimestamp: startDateTime ? startDateTime.getTime() : null,
+            endTimestamp: targetDateTime ? targetDateTime.getTime() : null,
+            inputValues: {
+                eventNameDate: el('cd_eventNameDate').value,
+                startDate: el('cd_startDate').value,
+                targetDate: el('cd_targetDate').value,
+                eventNameDays: el('cd_eventNameDays').value,
+                startDateDays: el('cd_startDateDays').value,
+                daysCount: el('cd_daysCount').value
+            },
+            lastUpdate: Date.now()
+        };
+        try {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(saveData));
+        } catch (e) {
+            // ignore
+        }
+    }
+
+    function loadCountdownData() {
+        try {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            if (!saved) return null;
+            const data = JSON.parse(saved);
+            if (!data) return null;
+
+            // If already expired, clear
+            const now = Date.now();
+            if (data.endTimestamp && data.endTimestamp < now) {
+                localStorage.removeItem(STORAGE_KEY);
+                return null;
+            }
+            return data;
+        } catch (e) {
+            return null;
+        }
+    }
+
+    function restoreCountdownData(data) {
+        if (!data) return false;
+
+        const mode = data.mode || 'date';
+        setMode(mode);
+
+        if (data.inputValues) {
+            el('cd_eventNameDate').value = data.inputValues.eventNameDate || '';
+            el('cd_startDate').value = data.inputValues.startDate || '';
+            el('cd_targetDate').value = data.inputValues.targetDate || '';
+            el('cd_eventNameDays').value = data.inputValues.eventNameDays || '';
+            el('cd_startDateDays').value = data.inputValues.startDateDays || '';
+            el('cd_daysCount').value = data.inputValues.daysCount || '';
+        }
+
+        if (data.startTimestamp && data.endTimestamp) {
+            startDateTime = new Date(data.startTimestamp);
+            targetDateTime = new Date(data.endTimestamp);
+
+            el('cd_displayEventName').textContent = data.eventName || '倒计时';
+            el('cd_countdownDisplay').classList.add('visible');
+
+            if (countdownTimer) clearInterval(countdownTimer);
+            runCountdown();
+            countdownTimer = setInterval(runCountdown, 1000);
+            return true;
+        }
+
+        return false;
+    }
+
+    function clearCountdownData() {
+        try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+    }
+
+    // Logic
+    function runCountdown() {
+        if (!targetDateTime) return;
+
+        const now = new Date();
+        const diff = targetDateTime - now;
+
+        if (diff <= 0) {
+            if (countdownTimer) clearInterval(countdownTimer);
+            countdownTimer = null;
+
+            updateTimerValue('cd_days', 0);
+            updateTimerValue('cd_hours', 0);
+            updateTimerValue('cd_minutes', 0);
+            updateTimerValue('cd_seconds', 0);
+
+            el('cd_progressBar').style.width = '100%';
+            el('cd_progressValue').textContent = '100%';
+
+            const badge = el('cd_statusBadge');
+            const statusIcon = el('cd_statusIcon');
+            const statusText = el('cd_statusText');
+
+            badge.className = 'cd-status-badge success';
+            statusIcon.textContent = '🎉';
+            statusText.textContent = '目标达成！';
+
+            saveCountdownData();
+            return;
+        }
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        updateTimerValue('cd_days', days);
+        updateTimerValue('cd_hours', hours);
+        updateTimerValue('cd_minutes', minutes);
+        updateTimerValue('cd_seconds', seconds);
+
+        if (startDateTime) {
+            el('cd_infoStart').textContent = formatDateShort(startDateTime);
+            el('cd_infoTarget').textContent = formatDateShort(targetDateTime);
+
+            const totalDays = Math.ceil((targetDateTime - startDateTime) / (1000 * 60 * 60 * 24));
+            el('cd_infoTotal').textContent = totalDays + ' 天';
+        }
+
+        // Progress
+        if (startDateTime) {
+            const total = targetDateTime - startDateTime;
+            const elapsed = now - startDateTime;
+            const progress = Math.min(Math.max((elapsed / total) * 100, 0), 100);
+            el('cd_progressBar').style.width = progress + '%';
+            el('cd_progressValue').textContent = progress.toFixed(1) + '%';
+        }
+
+        // Status
+        const badge = el('cd_statusBadge');
+        const statusIcon = el('cd_statusIcon');
+        const statusText = el('cd_statusText');
+
+        if (days === 0 && hours < 1) {
+            badge.className = 'cd-status-badge final-sprint';
+            statusIcon.textContent = '⚡';
+            statusText.textContent = '最后冲刺！不到1小时';
+        } else if (days === 0) {
+            badge.className = 'cd-status-badge last-day';
+            statusIcon.textContent = '🔥';
+            statusText.textContent = '今天是最后一天';
+        } else if (days <= 3) {
+            badge.className = 'cd-status-badge few-days';
+            statusIcon.textContent = '⏰';
+            statusText.textContent = '只剩最后几天';
+        } else if (days <= 7) {
+            badge.className = 'cd-status-badge week';
+            statusIcon.textContent = '📅';
+            statusText.textContent = '还有一周时间';
+        } else {
+            badge.className = 'cd-status-badge calm';
+            statusIcon.textContent = '⏳';
+            statusText.textContent = '时间充裕，从容准备';
+        }
+
+        // Periodic save (every ~10s)
+        if (Date.now() % 10000 < 120) saveCountdownData();
+    }
+
+    function startCountdown() {
+        const isDateMode = (modal.querySelector('.cd-mode-btn.active')?.dataset.mode) === 'date';
+        let start, target, eventName;
+
+        if (isDateMode) {
+            const startVal = el('cd_startDate').value;
+            const targetVal = el('cd_targetDate').value;
+            eventName = el('cd_eventNameDate').value;
+
+            if (!startVal || !targetVal) {
+                toast('请选择开始日期和目标日期', 'error');
+                return;
+            }
+
+            start = new Date(startVal);
+            start.setHours(0, 0, 0, 0);
+            target = new Date(targetVal);
+            target.setHours(23, 59, 59, 999);
+        } else {
+            const startVal = el('cd_startDateDays').value;
+            const daysVal = parseInt(el('cd_daysCount').value, 10);
+            eventName = el('cd_eventNameDays').value;
+
+            if (!startVal || !daysVal || daysVal < 1) {
+                toast('请选择开始日期并输入有效天数', 'error');
+                return;
+            }
+
+            start = new Date(startVal);
+            start.setHours(0, 0, 0, 0);
+            target = new Date(start);
+            target.setDate(target.getDate() + daysVal - 1);
+            target.setHours(23, 59, 59, 999);
+        }
+
+        const now = new Date();
+        if (target <= now) {
+            toast('目标日期必须在当前时间之后', 'error');
+            return;
+        }
+
+        startDateTime = start;
+        targetDateTime = target;
+
+        el('cd_displayEventName').textContent = eventName || '倒计时';
+        el('cd_countdownDisplay').classList.add('visible');
+
+        if (countdownTimer) clearInterval(countdownTimer);
+        runCountdown();
+        countdownTimer = setInterval(runCountdown, 1000);
+
+        saveCountdownData();
+
+        // Smooth scroll inside modal body
+        const body = modal.querySelector('.modal-body');
+        if (body) {
+            setTimeout(() => {
+                const box = el('cd_countdownDisplay');
+                try {
+                    box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                } catch (e) {}
+            }, 80);
+        }
+    }
+
+    function resetCountdown() {
+        if (countdownTimer) {
+            clearInterval(countdownTimer);
+            countdownTimer = null;
+        }
+
+        el('cd_countdownDisplay').classList.remove('visible');
+
+        ['cd_days', 'cd_hours', 'cd_minutes', 'cd_seconds'].forEach(id => {
+            const node = el(id);
+            if (node) node.textContent = '00';
+        });
+
+        el('cd_progressBar').style.width = '0%';
+        el('cd_progressValue').textContent = '0%';
+
+        const badge = el('cd_statusBadge');
+        const statusIcon = el('cd_statusIcon');
+        const statusText = el('cd_statusText');
+
+        badge.className = 'cd-status-badge calm';
+        statusIcon.textContent = '⏳';
+        statusText.textContent = '时间充裕，从容准备';
+
+        startDateTime = null;
+        targetDateTime = null;
+
+        clearCountdownData();
+        saveCountdownData();
+    }
+
+    // Buttons
+    el('cd_startBtn').addEventListener('click', startCountdown);
+    el('cd_resetBtn').addEventListener('click', resetCountdown);
+
+    // Enter key to start
+    modal.querySelectorAll('input').forEach(input => {
+        input.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') startCountdown();
+        });
+    });
+
+    // Auto-save (debounced)
+    let saveTimeout;
+    modal.querySelectorAll('input').forEach(input => {
+        input.addEventListener('input', () => {
+            clearTimeout(saveTimeout);
+            saveTimeout = setTimeout(saveCountdownData, 800);
+        });
+    });
+
+    // Default dates (if no restore)
+    const today = new Date();
+    const todayStr = today.toISOString().split('T')[0];
+
+    const saved = loadCountdownData();
+    if (!saved || !restoreCountdownData(saved)) {
+        el('cd_startDate').value = todayStr;
+        el('cd_startDateDays').value = todayStr;
+
+        const defaultTarget = new Date(today);
+        defaultTarget.setDate(defaultTarget.getDate() + 30);
+        el('cd_targetDate').value = defaultTarget.toISOString().split('T')[0];
+        el('cd_daysCount').value = 30;
+        setTimeout(() => updateIndicator(modeBtns[0]), 50);
+    }
+
+    // Expose small hooks for other UI parts (optional)
+    window.__openCountdownModal = openCountdownModal;
+}
+
+</script>
+ 
+  <!-- 倒计时 / 计时 模态框 -->
+  <div class="modal" id="countdownModal" aria-hidden="true">
+   <div class="modal-content form-modal-content cd-modal-content">
+    <div class="modal-header">
+     <h3 class="modal-title">
+      <i class="fas fa-hourglass-half"></i>
+      倒计时
+     </h3>
+     <button class="close-modal" id="closeCountdownModal">×</button>
+    </div>
+    <div class="modal-body auto-scrollbar">
+     <div class="cd-wrap">
+      <div class="cd-mode" role="tablist" aria-label="倒计时模式选择">
+       <button class="cd-mode-btn active" data-mode="date" role="tab" aria-selected="true">
+        <i class="fas fa-calendar-alt"></i><span>选日期</span>
+       </button>
+       <button class="cd-mode-btn" data-mode="days" role="tab" aria-selected="false">
+        <i class="fas fa-hashtag"></i><span>输入天数</span>
+       </button>
+       <div class="cd-indicator" aria-hidden="true"></div>
+      </div>
+
+      <div class="cd-forms">
+       <div class="cd-form active" id="cdDateForm" role="tabpanel">
+        <div class="cd-grid">
+         <label class="cd-field">
+          <span>事件名称</span>
+          <input id="cd_eventNameDate" type="text" placeholder="例如：考试 / 截止 / 旅行" autocomplete="off"/>
+         </label>
+         <label class="cd-field">
+          <span>开始日期</span>
+          <input id="cd_startDate" type="date"/>
+         </label>
+         <label class="cd-field">
+          <span>目标日期</span>
+          <input id="cd_targetDate" type="date"/>
+         </label>
+        </div>
+       </div>
+
+       <div class="cd-form" id="cdDaysForm" role="tabpanel">
+        <div class="cd-grid">
+         <label class="cd-field">
+          <span>事件名称</span>
+          <input id="cd_eventNameDays" type="text" placeholder="例如：打卡 / 计划 / 项目" autocomplete="off"/>
+         </label>
+         <label class="cd-field">
+          <span>开始日期</span>
+          <input id="cd_startDateDays" type="date"/>
+         </label>
+         <label class="cd-field">
+          <span>天数</span>
+          <input id="cd_daysCount" type="number" min="1" step="1" placeholder="例如：30" inputmode="numeric"/>
+         </label>
+        </div>
+       </div>
+      </div>
+
+      <div class="cd-actions">
+       <button class="nav-btn primary" id="cd_startBtn">
+        <i class="fas fa-play"></i>开始
+       </button>
+       <button class="nav-btn" id="cd_resetBtn">
+        <i class="fas fa-undo"></i>重置
+       </button>
+      </div>
+
+      <section class="cd-display" id="cd_countdownDisplay" aria-live="polite">
+       <div class="cd-display-head">
+        <div class="cd-title" id="cd_displayEventName">倒计时</div>
+       </div>
+
+       <div class="cd-timer" role="group" aria-label="倒计时">
+        <div class="cd-timer-block">
+         <div class="cd-timer-value" id="cd_days">00</div>
+         <div class="cd-timer-label">天</div>
+        </div>
+        <div class="cd-timer-block">
+         <div class="cd-timer-value" id="cd_hours">00</div>
+         <div class="cd-timer-label">时</div>
+        </div>
+        <div class="cd-timer-block">
+         <div class="cd-timer-value" id="cd_minutes">00</div>
+         <div class="cd-timer-label">分</div>
+        </div>
+        <div class="cd-timer-block">
+         <div class="cd-timer-value" id="cd_seconds">00</div>
+         <div class="cd-timer-label">秒</div>
+        </div>
+       </div>
+
+       <div class="cd-info">
+        <div class="cd-info-card">
+         <div class="cd-info-icon">🚀</div>
+         <div class="cd-info-content"><small>开始</small><span id="cd_infoStart">-</span></div>
+        </div>
+        <div class="cd-info-card">
+         <div class="cd-info-icon">🎯</div>
+         <div class="cd-info-content"><small>目标</small><span id="cd_infoTarget">-</span></div>
+        </div>
+        <div class="cd-info-card">
+         <div class="cd-info-icon">📊</div>
+         <div class="cd-info-content"><small>总天数</small><span id="cd_infoTotal">-</span></div>
+        </div>
+       </div>
+
+       <div class="cd-progress">
+        <div class="cd-progress-head">
+         <span class="cd-progress-label">时间进度</span>
+         <span class="cd-progress-value" id="cd_progressValue">0%</span>
+        </div>
+        <div class="cd-progress-track">
+         <div class="cd-progress-bar" id="cd_progressBar"></div>
+        </div>
+       </div>
+
+       <div class="cd-status">
+        <div class="cd-status-badge calm" id="cd_statusBadge">
+         <span class="cd-status-icon" id="cd_statusIcon">⏳</span>
+         <span id="cd_statusText">时间充裕，从容准备</span>
+        </div>
+       </div>
+      </section>
+     </div>
+    </div>
+   </div>
+  </div>
+
+</body>
 </html>
